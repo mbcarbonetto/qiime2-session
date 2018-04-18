@@ -30,7 +30,7 @@ PhD students and post-doctoral researchers who are planning to use Illumina base
 
 ## Learning outcomes
 
-###**LO1- Understand core concepts in diversity analysis**###
+**LO1- Understand core concepts in diversity analysis**
  
  LO1.1- Explain what alpha diversity is. What are the components of alpha diversity?
  
@@ -40,29 +40,29 @@ PhD students and post-doctoral researchers who are planning to use Illumina base
  
  LO1.4- List advantages of 16S rRNA subunit gene as marker for diversity analysis.
  
-###**LO2- List steps in 16S rRNA amplicon based microbial diveristy analysis**###
+**LO2- List steps in 16S rRNA amplicon based microbial diveristy analysis**
 
-###**LO3- Prepare a mapping file**###
+**LO3- Prepare a mapping file**
 
-###**LO4- Perform demultiplexing of reads**###
+**LO4- Perform demultiplexing of reads**
 
  LO4.1- List the options for demultiplexing reads
  LO4.2- Explore quality report and plot and decide on the quality filters to apply next
- 
-###**LO5- Perform quality control and cluster reads into features**###
+
+**LO5- Perform quality control and cluster reads into features**
 
  LO5.1- Perform quality filtering by phred score and explore results
  LO5.2- Name the main differences between subOTUs and OTU tables
  LO5.3- Perform feature table construction and finish quality control
  LO5.4- Create summaries
  
-###**LO6- Perform alignment and a phylogenetic tree**##
+**LO6- Perform alignment and a phylogenetic tree**
 
  LO6.1- Perform a multiple sequence alignment of the sequences
  LO6.2- Mask the alignment
  LO6.3- Create a phylogenetic tree
  
-###**LO7- Perform diveristy analysis**###
+**LO7- Perform diveristy analysis**
 
  LO7.1- List the options of alpha and beta diversity metrics that can be measured
  LO7.2- Decide on the subsampling depth to use for diversity calculations. How many samples are excluded?
