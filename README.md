@@ -16,9 +16,7 @@ PhD students and post-doctoral researchers who are planning to use Illumina base
 
 -Learn what *diversity* is. Understand concepts of alpha (richness and evenness) and beta diversity.
 
--Perform pre-process of sequences: remove primers and barcodes, demultiplex samples.
-
--Do quality filtering, denoising and picking of features and representative sequences with DADA2 and Deblur
+-Do quality filtering, denoising and picking of features and representative sequences with DADA2
 
 -Assign taxonomy to features with trained classifiers.
 
@@ -26,35 +24,32 @@ PhD students and post-doctoral researchers who are planning to use Illumina base
 
 -Calculate alpha and beta diversity.
 
--Test for differential abundances between groups of samples using  ANCOM and gneiss.
+-Test for differential abundances between groups of samples using ANCOM.
 
 ## Learning outcomes
 
 **LO1- Understand core concepts in diversity analysis**
  
  LO1.1- Explain what alpha diversity is. What are the components of alpha diversity?
+   
+ LO1.2- How can you measure beta diversity? What are the differences between distances?
  
- LO1.2- What information can you take from a rarefaction curve?
- 
- LO1.3- How can you measure beta diversity? What are the differences between distances?
- 
- LO1.4- List advantages of 16S rRNA subunit gene as marker for diversity analysis.
+ LO1.3- List advantages of 16S rRNA subunit gene as marker for diversity analysis.
  
 **LO2- List steps in 16S rRNA amplicon based microbial diveristy analysis**
 
-**LO3- Prepare a mapping file**
+**LO3- Prepare a mapping file for QIIME2**
 
-**LO4- Perform demultiplexing of reads**
+**LO4- Import data into QIIME2**
 
- LO4.1- List the options for demultiplexing reads
+ LO4.1- List the options for importing data
  LO4.2- Explore quality report and plot and decide on the quality filters to apply next
 
 **LO5- Perform quality control and cluster reads into features**
 
  LO5.1- Perform quality filtering by phred score and explore results
- LO5.2- Name the main differences between subOTUs and OTU tables
- LO5.3- Perform feature table construction and finish quality control
- LO5.4- Create summaries
+ LO5.2- Name the main differences between subOTUs and OTUs
+ LO5.3- Create summaries
  
 **LO6- Perform alignment and a phylogenetic tree**
 
@@ -72,8 +67,7 @@ PhD students and post-doctoral researchers who are planning to use Illumina base
           
           3.2 Which categories in metadata are most strongly associated with the differences in microbial community richness? Are these differences statistically significant? Can you observe the same results for all diveristy metrics?
           
-          3.3 When viewing the alpha rarefaction plot for the “observed_otus” metric, can you say there is sufficient diversity coverage? 
-          
+                  
 **LO8- Perform taxonomic classification and analysis**
 
 LO8.1- Describe the classification method available. What is needed to train the classifiers?
