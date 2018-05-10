@@ -90,7 +90,9 @@ We are now ready to create a QIIME2 for our data:
     --output-path /home/Documents/working_dir/single-end-demux.qza \
     --source-format SingleEndFastqManifestPhred33
 
-With this command we are telling QIIME2 which **semantic type** (--type) to follow and what **source** (--source) of data we are importing. We are algo giving the path to the input fastq files with the manifest file (--input-path). Finally we are telling QIIME2 where to create the output file (--output-path) which will be called **single-end-demux.qza**
+With this command we are telling QIIME2 which **semantic type** (--type) to follow and what **source** (--source) of data we are importing. We are algo giving the path to the **input** fastq files with the manifest file (--input-path). Finally we are telling QIIME2 where to create the **output** file (--output-path) which will be called **single-end-demux.qza**
+
+There are many other types of data that can be imported to QIIME2, each will have a different semantic type asigned and different protocols will be used to import them. Please follow [this link](https://docs.qiime2.org/2018.2/semantic-types/) for more information on semantic types in QIIME2 and [this one](https://docs.qiime2.org/2018.2/tutorials/importing/) to learn how to import different types of data.
     
 
 
