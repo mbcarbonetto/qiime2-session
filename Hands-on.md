@@ -11,15 +11,17 @@ output: html_document
 
 **During this hands-on session you will learn how to:**
 
-1- Do quality filtering, denoising and picking of features and representative sequences using DADA2
+1- "Import" data into QIIME2 
 
-2- Assign taxonomy to features with trained classifiers.
+2- Do quality filtering, denoising and picking of features and representative sequences using DADA2
 
-3- Align sequences and build a phylogenetic tree.
+3- Assign taxonomy to features with trained classifiers.
 
-4- Calculate alpha and beta diversity.
+4- Align sequences and build a phylogenetic tree.
 
-5- Test for differential abundances between groups of samples using ANCOM
+5- Calculate alpha and beta diversity.
+
+6- Test for differential abundances between groups of samples using ANCOM
 
 **Note:** QIIME2 has already been installed in your working station in order to follow this tutorial.
 
@@ -50,16 +52,14 @@ Sample IDs needs to be unique.
 
 Metadata columns can contain categorical or numerical values. Theay should also include labels.
 
+You can follow this [link](https://docs.qiime2.org/2018.2/tutorials/metadata/) to learn more about metadata in QIIME2
+
 Even if we are not doing it during this session, it is good practice to perform a validation of the mapping file.
 To do that you can use Keemei, which is a  Google Sheets add-on for validating tabular bioinformatics file formats.
 Instructions for installation and usage can be found [here](https://keemei.qiime2.org/)
 
+### 1. Import data- Create an artifact 
 
+### 2.Quality filtering, denoising and feature picking using DADA2
 
-
-
-
-
-
-### 1.Quality filtering, denoising and feature picking using DADA2
 
