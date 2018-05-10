@@ -58,7 +58,47 @@ Even if we are not doing it during this session, it is good practice to perform 
 To do that you can use Keemei, which is a  Google Sheets add-on for validating tabular bioinformatics file formats.
 Instructions for installation and usage can be found [here](https://keemei.qiime2.org/)
 
-### 1. Import data- Create an artifact 
+### 1. Import data- Create an *artifact*
+
+To start working in QIIME2 we need to activate the QIIME environment. To do so first open a terminal:
+
+![terminal](https://github.com/mbcarbonetto/qiime2-session/blob/master/terminal_button.png)
+
+Then type:
+
+    source activate qiime2-2018.4
+
+We are now creating a working directory where we are going to place the output files of this session:
+
+    mkdir working_dir
+
+You can also move the [input files](https://github.com/mbcarbonetto/qiime2-session/tree/master/files) you heve already dowloaded to this folder:
+
+    mv ~/Downloads/files/ working_dir/
+
+All data that is used as input to QIIME2 should be in form of QIIME2 artifacts, which contain information about the type of data and the source of the data. So, the first thing we need to do is import the sequence data files into a QIIME2 artifact.
+The semantic type of our data is **SampleData[SequencesWithQuality]**, i.e *Sequences with quality scores (.fastq files), where each set of sequences is associated with a sample identifier (i.e. demultiplexed sequences, each file is a sample).*
+In order to create the artifact with the correct metadata (source and type of data) we need a [*manifest*](https://github.com/mbcarbonetto/qiime2-session/blob/master/files/manifest.txt) file. This file will indicate the sample ID, the location of each file and the direction of the reads, in our case forward reads.
+
+Please complete the file with the correct path for each fastq file in your computer (replace "completePATH" for the real path).
+
+We are now ready to create a QIIME2 for our data:
+
+    qiime tools import \
+    --type 'SampleData[SequencesWithQuality]' \
+    --input-path /home/Documents/working_dir/files/manifest.txt \
+    --output-path /home/Documents/working_dir/single-end-demux.qza \
+    --source-format SingleEndFastqManifestPhred33
+
+With this command we are telling QIIME2 which **semantic type** (--type) to follow and what **source** (--source) of data we are importing. We are algo giving the path to the input fastq files with the manifest file (--input-path). Finally we are telling QIIME2 where to create the output file (--output-path) which will be called **single-end-demux.qza**
+    
+
+
+
+
+
+
+
 
 ### 2.Quality filtering, denoising and feature picking using DADA2
 
