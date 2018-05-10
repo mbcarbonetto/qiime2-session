@@ -33,9 +33,11 @@ We are going to follow this analysis workflow:
 
 ![workflow](https://github.com/mbcarbonetto/qiime2-session/blob/master/hands_on_qiime2.png)
 
+**Note:** every task that you will perfom is going to be marked with this symbol &#x1F536;
+
 ### 0. Data set and input files
 
-You can download the files we will use in this session from this [link](https://github.com/mbcarbonetto/qiime2-session/tree/master/files)
+&#x1F536; You will need to download the files we will use in this session from this [link](https://github.com/mbcarbonetto/qiime2-session/tree/master/files)
 
 The test dataset we are going to use is originally from ![Batista et al. (2015)](https://www.nature.com/articles/ncomms9945#Fig5)
 It is composed of ten **.fastq** files, one for each sample. Mice gut microbiota was sampled under 2 conditions: under Streptomycin treatment and with no antibiotics treatment. The data set is composed of 5 replicates for each condition. Each file consist of 10,000 subsampled reads from the original fastq files. Reads are amplicons of the V3–V4 region of the 16S rRNA gene. They are single forward reads, already demultiplexed (one file/sample), with no primers and no barcodes.
@@ -60,19 +62,19 @@ Instructions for installation and usage can be found [here](https://keemei.qiime
 
 ### 1. Import data- Create an *artifact*
 
-To start working in QIIME2 we need to activate the QIIME environment. To do so first open a terminal:
+&#x1F536; To start working in QIIME2 we need to activate the QIIME environment. To do so first open a terminal:
 
 ![terminal](https://github.com/mbcarbonetto/qiime2-session/blob/master/terminal_button.png)
 
-Then type:
+&#x1F536; Then type:
 
     source activate qiime2-2018.4
 
-We are now creating a working directory where we are going to place the output files of this session:
+&#x1F536; We are now creating a working directory where we are going to place the output files of this session:
 
     mkdir working_dir
 
-You can also move the [input files](https://github.com/mbcarbonetto/qiime2-session/tree/master/files) you heve already dowloaded to this folder:
+&#x1F536; You can also move the [input files](https://github.com/mbcarbonetto/qiime2-session/tree/master/files) you heve already dowloaded to this folder:
 
     mv ~/Downloads/files/ working_dir/
 
@@ -80,9 +82,9 @@ All data that is used as input to QIIME2 should be in form of QIIME2 artifacts, 
 The semantic type of our data is **SampleData[SequencesWithQuality]**, i.e *Sequences with quality scores (.fastq files), where each set of sequences is associated with a sample identifier (i.e. demultiplexed sequences, each file is a sample).*
 In order to create the artifact with the correct metadata (source and type of data) we need a [*manifest*](https://github.com/mbcarbonetto/qiime2-session/blob/master/files/manifest.txt) file. This file will indicate the sample ID, the location of each file and the direction of the reads, in our case forward reads.
 
-Please complete the file with the correct path for each fastq file in your computer (replace "completePATH" for the real path).
+&#x1F536; Please complete the file with the correct path for each fastq file in your computer (replace "completePATH" for the real path).
 
-We are now ready to create a QIIME2 for our data:
+&#x1F536; We are now ready to create a QIIME2 for our data:
 
     qiime tools import \
     --type 'SampleData[SequencesWithQuality]' \
