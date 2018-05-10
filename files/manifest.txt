@@ -1,0 +1,12 @@
+#SingleEndFastqManifestPhred33_qiime2_session
+sample-id,absolute-filepath,direction
+WT.unt.1,completePATH/16S_WT_unt_1_SRR2627457_1.fastq,forward
+WT.unt.2,completePATH/16S_WT_unt_2_SRR2627461_1.fastq,forward
+WT.unt.3,completePATH/16S_WT_unt_3_SRR2627463_1.fastq,forward
+WT.unt.4,completePATH/16S_WT_unt_4_SRR2627464_1.fastq,forward
+WT.unt.7,completePATH/16S_WT_unt_7_SRR2627465_1.fastq,forward
+WT.day3.11,completePATH/16S_WT_day3_11_SRR2628505_1.fastq,forward
+WT.day3.13,completePATH/16S_WT_day3_13_SRR2628506_1.fastq,forward
+WT.day3.15,completePATH/16S_WT_day3_15_SRR2628507_1.fastq,forward
+WT.day3.14,completePATH/16S_WT_day3_14_SRR2627471_1.fastq,forward
+WT.day3.9,completePATH/16S_WT_day3_9_SRR2628504_1.fastq,forward
