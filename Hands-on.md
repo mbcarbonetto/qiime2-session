@@ -27,7 +27,9 @@ If you are interested in how to install QIIME2 on your own computer please follo
 
 ### Core workflow:
 
-We are going to follow ![this](mbcarbonetto/qiime2-session/hands_on_qiime2.png) analysis workflow
+We are going to follow this analysis workflow:
+
+![workflow](https://github.com/mbcarbonetto/qiime2-session/blob/master/hands_on_qiime2.png)
 
 ### 1.Quality filtering, denoising and feature picking using DADA2
 
