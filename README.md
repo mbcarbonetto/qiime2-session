@@ -1,6 +1,6 @@
 ---
 title: "Microbial diversity analysis using 16S rRNA gene- Trainning session with QIIME2"
-author: "Belen Carbonetto"
+author: "Belén Carbonetto"
 date: "March 26, 2018"
 output: html_document
 ---
