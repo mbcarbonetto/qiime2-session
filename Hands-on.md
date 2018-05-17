@@ -96,7 +96,7 @@ With this command we are telling QIIME2 which **semantic type** (--type) to foll
 
 There are many other types of data that can be imported to QIIME2, each will have a different semantic type asigned and different protocols will be used to import them. Please follow [this link](https://docs.qiime2.org/2018.2/semantic-types/) for more information on semantic types in QIIME2 and [this one](https://docs.qiime2.org/2018.2/tutorials/importing/) to learn how to import different types of data.
 
-Note: QIIME2 has a different argument structure than the previous QIIME version. We need to write first the command **qiime**, then the **plugin** name, then the **method** name and then the **arguments** (input, output and parameters). So, we need to follow this structure:
+Note: QIIME2 has a different argument structure than the previous QIIME version. We need to write first the command **qiime**, then the **plugin** name, then the **method** name and then the **arguments** (input, output and parameters). So, we need to follow this structure (the order is not important):
 
     qiime plugin method \
     --i-<input>
@@ -106,7 +106,23 @@ Note: QIIME2 has a different argument structure than the previous QIIME version.
     ..
     --o-<output>
 
+&#x1F536; After creating the artifact **single-end-demux.qza** we can create a viszaualition file to explore our data:
+
+    qiime demux summarize \
+    --i-data single-end-demux.qza \
+    --o-visualization single-end-demux.qzv
+
+All QIIME2 visualizers (i.e., commands that take a --o-visualization parameter) will generate a **.qzv** file. You can view these files with **qiime tools view**. 
+
+    qiime tools view single-end-demux.qzv
+
+This visualization allows to explore descriptive statistics of the sample sizes (i.e. min, max, median, mean, histogram) and samples quality based on Quality Score per base.
+
+For our data set the **Overvirew** information is not very informative since we know beforehand that all samples have the same size (10,000 reads). However take a look at que **Interactive Quality Plot**. What is the read size when quality falls below Q20?
+
 ### 2.Quality filtering, denoising and feature picking using DADA2
+
+
 
 
 
