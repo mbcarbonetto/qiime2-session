@@ -46,13 +46,13 @@ Besides the ![.fastq files](https://github.com/mbcarbonetto/qiime2-session/tree/
 This is how the mapping file looks like:
 ![mapping_image](https://github.com/mbcarbonetto/qiime2-session/blob/master/mapping_file.jpg)
 
-The column labels are always in the first row, **#** indicates that the line is not going to be read.
-Sample IDs must be in the first columns, the rest of the columns include metadata. 
+The column labels are always in the first row, **#** indicates that the line is not going to be read as a sample.
+Sample IDs must be in the first column, the rest of the columns include metadata. 
 Sample IDs needs to be unique. 
 -should be 36 characters long or less.
 -should contain only ASCII alphanumeric characters (\[a-z]\, \[A-Z]\, or \[0-9]\), the period (.) character, or the dash (-) character.
 
-Metadata columns can contain categorical or numerical values. Theay should also include labels.
+Metadata columns can contain categorical or numerical values. They should also include labels.
 
 You can follow this [link](https://docs.qiime2.org/2018.2/tutorials/metadata/) to learn more about metadata in QIIME2
 
@@ -84,7 +84,7 @@ In order to create the artifact with the correct metadata (source and type of da
 
 &#x1F536; Please complete the file with the correct path for each fastq file in your computer (replace "completePATH" for the real path).
 
-&#x1F536; We are now ready to create a QIIME2 for our data:
+&#x1F536; We are now ready to create a QIIME2 artifact with our data:
 
     qiime tools import \
     --type 'SampleData[SequencesWithQuality]' \
@@ -103,7 +103,7 @@ Note: QIIME2 has a different argument structure than the previous QIIME version.
     --m-<metadata>
     --p-<parameter1>
     --p-<parameter2>
-    ..
+    ...
     --o-<output>
 
 &#x1F536; After creating the artifact **single-end-demux.qza** we can create a viszaualition file to explore our data:
@@ -147,6 +147,18 @@ This command may take up to 30 minutes to run.
 - Are we remmoving chimeras? If so, which method are we using?
 
 - What are you expecting as output files?
+
+&#x1F536; You can now crate a summary of the results and visualize it using *qiime tools view**
+
+    qiime feature-table summarize \
+    --i-table DADA2/table.qza \
+    --o-visualization DADA2/table-dada2.qzv \
+    --m-sample-metadata-file /home/Documents/working_dir/files/mapping_file.tsv
+    
+    qiime tools view DADA2/table-dada2.qzv
+
+
+
 
 
 
