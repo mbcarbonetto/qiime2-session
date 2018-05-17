@@ -96,7 +96,7 @@ With this command we are telling QIIME2 which **semantic type** (--type) to foll
 
 There are many other types of data that can be imported to QIIME2, each will have a different semantic type asigned and different protocols will be used to import them. Please follow [this link](https://docs.qiime2.org/2018.2/semantic-types/) for more information on semantic types in QIIME2 and [this one](https://docs.qiime2.org/2018.2/tutorials/importing/) to learn how to import different types of data.
 
-Note: QIIME2 has a different argument structure than the previous QIIME version. In QIIME2 we need to follow this structure:
+Note: QIIME2 has a different argument structure than the previous QIIME version. We need to write first the command **qiime**, then the **plugin** name, then the **method** name and then the **arguments** (input, output and parameters). So, we need to follow this structure:
 
     qiime plugin method \
     --i-<input>
