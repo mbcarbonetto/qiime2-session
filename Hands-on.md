@@ -118,9 +118,36 @@ All QIIME2 visualizers (i.e., commands that take a --o-visualization parameter) 
 
 This visualization allows to explore descriptive statistics of the sample sizes (i.e. min, max, median, mean, histogram) and samples quality based on Quality Score per base.
 
-For our data set the **Overvirew** information is not very informative since we know beforehand that all samples have the same size (10,000 reads). However take a look at que **Interactive Quality Plot**. What is the read size when quality falls below Q20?
+For our data set, the **Overvirew** information is not very informative since we know beforehand that all samples have the same size (10,000 reads). However, take a look at que **Interactive Quality Plot**: what is the read size when quality falls below Q20?
 
 ### 2.Quality filtering, denoising and feature picking using DADA2
+
+We are now ready to perform quality control and feature picking. We are going to use DADA2. 
+This method is based on correcting (where possible) Illumina sequencing mistakes. Features (also called amplicon sequence variants or ASV)  are inferred by a de novo process in which biological (true) sequences are discriminated from errors on the basis of the expectation that biological sequences are more likely to be repeatedly observed than are error-containing sequences.
+You can get further details on the method [here](https://www.nature.com/articles/nmeth.3869) and [here](https://www.biorxiv.org/content/early/2015/08/06/024034).
+
+&#x1F536; Run the following command in order to apply DADA2 on **single-end-demux.qza**:
+
+    qiime dada2 denoise-single \
+    --i-demultiplexed-seqs single-end-demux.qza \
+    --p-trunc-len 0 \
+    --p-trunc-q 19 \
+    --output-dir DADA2
+
+This command may take up to 30 minutes to run.
+&#x1F536; While you wait open a new terminal, open the QIIME2 environment and read the specifiactions of the parameters we have just used:
+
+    source activate qiime2-2018.4
+    qiime dada2 denoise-single -- help
+
+- Which criteria are we using to filter data by quality?
+
+- Could have we used another filtering/trimming method? (hint: take a look at the **Interactive Quality Plot**)
+
+- Are we remmoving chimeras? If so, which method are we using?
+
+- What are you expecting as output files?
+
 
 
 
