@@ -157,6 +157,12 @@ This command may take up to 30 minutes to run.
     
     qiime tools view DADA2/table-dada2.qzv
 
+Explore results:
+
+- How many features has DADA2 resolved?
+- How many reads remain after quality filtering?
+- Which sample has the minimum frequency of reads? and the maximum?
+
 
 
 
