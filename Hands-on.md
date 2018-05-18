@@ -275,7 +275,7 @@ We have not yet taken a look at alpha diversity results.
     --m-metadata-file /home/Documents/working_dir/files/mapping_file.tsv \
     --o-visualization core-metrics-results/observed_otus_vector-group-significance.qzv
    
-:question: Is richnnes different between Streptomycin treated and untreated samples?
+:question: Is richnnes different between *Streptomycin treated* and *untreated* samples?
 
 You can do the same analysis for every alpha diveristy metric calculated.
 
