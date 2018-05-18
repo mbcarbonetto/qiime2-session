@@ -180,12 +180,7 @@ Before we continue with the analysis we can export the feature table son we can 
     biom convert -i feature-table.biom -o feature-table.txt --to-tsv
     cd ..
     
-We have just converted the feature table **table.qza** into **feature-table.biom**, which is useful for analysis with [Picrust](http://picrust.github.io/picrust/) or [Phyloseq](https:/qiime diversity core-metrics-phylogenetic \
- --i-phylogeny rooted-tree.qza \
- --i-table DADA2/table.qza \
- --p-sampling-depth 5474 \
- --m-metadata-file /home/participant/Desktop/qiime2/hands_on/mapping_file.tsv \
- --output-dir core-metrics-results/joey711.github.io/phyloseq/) for example, and **feature-table.txt** which can be visualized in any spreadsheet app.
+We have just converted the feature table **table.qza** into **feature-table.biom**, which is useful for analysis with [Picrust](http://picrust.github.io/picrust/) or [Phyloseq](https:/qiime diversity core-metrics-phylogeneticjoey711.github.io/phyloseq/) for example, and **feature-table.txt** which can be visualized in any spreadsheet app.
 
 ### 3- Align sequences and build a phylogenetic tree.
 
