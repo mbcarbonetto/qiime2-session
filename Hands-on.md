@@ -255,13 +255,29 @@ Several visualizarion files were created, you will have one **.qzv** file for ea
 
 :question: Can you observe any pattern or grouping of samples?
 
-We can now test for the significance of these grouping by using the following command:
+&#x1F536; We can now test for the significance of these grouping by using the following command:
 
     qiime diversity beta-group-significance \ 
-    --i-distance-matrix unweighted_unifrac_distance_matrix.qza \ 
+    --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \ 
     --m-metadata-file /home/Documents/working_dir/files/mapping_file.tsv \ 
     --m-metadata-column AntibioticUsage \ 
-    --o-visualization unweighted_unifrac_AntibioticUsage-significance.qzv
+    --o-visualization core-metrics-results/unweighted_unifrac_AntibioticUsage-significance.qzv
+    qiime tools view core-metrics-results/unweighted_unifrac_AntibioticUsage-significance.qzv
+     
+You can do the same analysis for every distance matrix.
+
+We have not yet taken a look at alpha diversity results.
+
+&#x1F536; A good way to explore this is by making comparisons between groups of samples:
+
+    qiime diversity alpha-group-significance \ 
+    --i-alpha-diversity core-metrics-results/observed_otus_vector.qza \ 
+    --m-metadata-file /home/Documents/working_dir/files/mapping_file.tsv \
+    --o-visualization core-metrics-results/observed_otus_vector-group-significance.qzv
+   
+:question: Is richnnes different between Streptomycin treated and untreated samples?
+
+You can do the same analysis for every alpha diveristy metric calculated.
 
 
 
