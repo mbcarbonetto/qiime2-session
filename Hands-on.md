@@ -47,6 +47,8 @@ We are going to follow this analysis workflow:
 
 **Note:** every task that you will perfom is going to be marked with this symbol &#x1F536;
 
+   Questions to further analyse results will be marked with this symbol :question:
+
 ### 0. Data set and input files
 
 &#x1F536; You will need to download the files we will use in this session from this [link](https://github.com/mbcarbonetto/qiime2-session/tree/master/files)
@@ -92,7 +94,7 @@ Instructions for installation and usage can be found [here](https://keemei.qiime
 
 All data that is used as input to QIIME2 should be in form of QIIME2 artifacts, which contain information about the type of data and the source of the data. So, the first thing we need to do is import the sequence data files into a QIIME2 artifact.
 The semantic type of our data is **SampleData[SequencesWithQuality]**, i.e *Sequences with quality scores (.fastq files), where each set of sequences is associated with a sample identifier (i.e. demultiplexed sequences, each file is a sample).*
-In order to create the artifact with the correct metadata (source and type of data) we need a [*manifest*](https://github.com/mbcarbonetto/qiime2-session/blob/master/files/manifest.txt) file. This file will indicate the sample ID, the location of each file and the direction of the reads, in our case forward reads.
+In order to create the artifact with the cointerrrect metadata (source and type of data) we need a [*manifest*](https://github.com/mbcarbonetto/qiime2-session/blob/master/files/manifest.txt) file. This file will indicate the sample ID, the location of each file and the direction of the reads, in our case forward reads.
 
 &#x1F536; Please complete the file with the correct path for each fastq file in your computer (replace "completePATH" for the real path).
 
@@ -130,7 +132,9 @@ All QIIME2 visualizers (i.e., commands that take a --o-visualization parameter) 
 
 This visualization allows to explore descriptive statistics of the sample sizes (i.e. min, max, median, mean, histogram) and samples quality based on Quality Score per base.
 
-For our data set, the **Overvirew** information is not very informative since we know beforehand that all samples have the same size (10,000 reads). However, take a look at que **Interactive Quality Plot**: what is the read size when quality falls below Q20?
+For our data set, the **Overvirew** information is not very informative since we know beforehand that all samples have the same size (10,000 reads). However, take a look at que **Interactive Quality Plot**:
+
+:question: what is the read size when quality falls below Q20?
 
 ### 2.Quality filtering, denoising and feature picking using DADA2
 
@@ -152,6 +156,8 @@ This command may take up to 30 minutes to run.
 
     source activate qiime2-2018.4
     qiime dada2 denoise-single -- help
+    
+:question:
 
 - Which criteria are we using to filter data by quality?
 
@@ -170,7 +176,7 @@ This command may take up to 30 minutes to run.
     
     qiime tools view DADA2/table-dada2.qzv
 
-Explore results:
+:question: Explore results:
 
 - How many features has DADA2 resolved?
 - How many reads remain after quality filtering?
@@ -249,6 +255,30 @@ Using a single command we are going to calculate the following metrics:
       --p-sampling-depth 5474 \
       --m-metadata-file /home/Documents/working_dir/files/mapping_file.tsv \
       --output-dir core-metrics-results
+
+:question: Can you tell why **--p-sampling-depth** was set to **5474**?
+
+This value was chosen based on the number of sequences in the **WT.day3.15** which is the one sample that has *fewer sequences*. Because most diversity metrics are sensitive to different sampling depths across different samples,we need to normalize data based on some criterium. Sub-sampling without replacement up to minimum sample size is one way to deal with this. This is probably not the best solution, but the most frequently used and accepted so far.
+
+This script will randomly subsample the counts from each sample to the value provided for this parameter. For example, if you provide --p-sampling-depth 500, this step will subsample the counts in each sample without replacement so that each sample in the resulting table has a total count of 500. If the total count for any sample(s) are smaller than this value, those samples will be dropped from the diversity analysis. Choosing this value is tricky. You can make this choice by reviewing the information presented in the **table.qzv** file that was created above and choosing a value that is as high as possible (so you retain more sequences per sample) while excluding as few samples as possible.
+
+Several visualizarion files were created, you will have one **.qzv** file for each beta diveristy metric that was calculated. 
+
+&#x1F536; You can explore results using **qiime tools view**
+
+    qiime tools view core-metrics-results/unweighted_unifrac_emperor.qzv
+
+&#x1F536; Take a look at the results for all beta diveristy distances. (Take advantage of the interactive functionalities)
+
+:question: Can you observe any pattern or grouping of samples?
+
+We can now test for the significance of these grouping by using the following command:
+
+    qiime diversity beta-group-significance \ 
+    --i-distance-matrix unweighted_unifrac_distance_matrix.qza \ 
+    --m-metadata-file /home/Documents/working_dir/files/mapping_file.tsv \ 
+    --m-metadata-column AntibioticUsage \ 
+    --o-visualization unweighted_unifrac_AntibioticUsage-significance.qzv
 
 
 
