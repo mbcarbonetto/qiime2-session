@@ -20,7 +20,19 @@ output: html_document
 4- Calculate alpha and beta diversity.
 
 5- Assign taxonomy to features with trained classifiers.
-
+Alpha	diversity
+§ Shannon’s	diversity	index	(a	quantitative	measure	of	community	richness)
+§ Observed	OTUs	(a	qualitative	measure	of	community	richness)
+§ Faith’s	Phylogenetic	Diversity	(a	qualitiative measure	of	community	richness	that	
+incorporates	phylogenetic	relationships	between	the	features)
+§ Evenness	(or	Pielou’s Evenness;	a	measure	of	community	evenness)
+• Beta	diversity
+§ Jaccard distance	(a	qualitative	measure	of	community	dissimilarity)
+§ Bray-Curtis	distance	(a	quantitative	measure	of	community	dissimilarity)
+§ unweighted	UniFrac distance	(a	qualitative	measure	of	community	dissimilarity	that	
+incorporates	phylogenetic	relationships	between	the	features)
+§ weighted	UniFrac distance	(a	quantitative	measure	of	community	dissimilarity	that	
+incorporates	phylogenetic	relationships	between	the	features
 6- Test for differential abundances between groups of samples using ANCOM
 
 **Note:** QIIME2 has already been installed in your working station in order to follow this tutorial.
@@ -207,6 +219,26 @@ Later we are going to calculate several diversity metrics and distances that wil
 These commands will not generate any visulization otuput.
 
 Now that we have the phylogenetic tree we are ready to calculate diversity.
+
+### 4- Calculate alpha and beta diversity
+
+Using a single command we are going to calculate the following metrics:
+
+**Alpha	diversity**
+- *Shannon’s	diversity	index*	(a quantitative	measure	of community richness)
+- *Observed	OTUs*	(just community	richness)
+- *Faith’s Phylogenetic Diversity* (a qualitiative measure of community	richness that incorporates phylogenetic	relationships between the features)
+- *Evenness*	(or	Pielou’s Evenness;	a measure of community evenness)
+
+**Beta	diversity**
+- *Jaccard distance*	(a	qualitative	measure	of community dissimilarity)
+- *Bray-Curtis	distance*	(a	quantitative measure of	community dissimilarity)
+- *Unweighted UniFrac distance*	(a qualitative measure of community	dissimilarity that incorporates	phylogenetic relationships between	the	features)
+- *Weighted	UniFrac distance* (a quantitative measure of community dissimilarity that incorporates	phylogenetic relationships	between	the	features.
+
+
+
+
 
 
 
