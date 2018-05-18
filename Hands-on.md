@@ -15,11 +15,11 @@ output: html_document
 
 2- Do quality filtering, denoising and picking of features and representative sequences using DADA2
 
-3- Assign taxonomy to features with trained classifiers.
+3- Align sequences and build a phylogenetic tree.
 
-4- Align sequences and build a phylogenetic tree.
+4- Calculate alpha and beta diversity.
 
-5- Calculate alpha and beta diversity.
+5- Assign taxonomy to features with trained classifiers.
 
 6- Test for differential abundances between groups of samples using ANCOM
 
@@ -31,7 +31,10 @@ If you are interested in how to install QIIME2 on your own computer please follo
 
 We are going to follow this analysis workflow:
 
-![workflow](https://github.com/mbcarbonetto/qiime2-session/blob/master/hands_on_qiime2.png)
+![workflow](https://github.com/mbcarbonetto/qiime2-session/blob/masqiime phylogeny midpoint-root \
+--i-tree unrooted-tree.qza \
+--o-rooted-tree rooted-tree.qza
+#ter/hands_on_qiime2.png)
 
 **Note:** every task that you will perfom is going to be marked with this symbol &#x1F536;
 
@@ -135,6 +138,7 @@ You can get further details on the method [here](https://www.nature.com/articles
     --output-dir DADA2
 
 This command may take up to 30 minutes to run.
+
 &#x1F536; While you wait open a new terminal, open the QIIME2 environment and read the specifiactions of the parameters we have just used:
 
     source activate qiime2-2018.4
@@ -163,7 +167,49 @@ Explore results:
 - How many reads remain after quality filtering?
 - Which sample has the minimum frequency of reads? and the maximum?
 
+We have now the feature table: **table.qza**, and we have assigned a representative sequence for each feature: **representative_sequences.qza**.
+Before we continue with the analysis we can export the feature table son we can explore data with another software if needed.
 
+&#x1F536; In order to export **table.qza** run:
+
+    qiime tools export DADA2/table.qza --output-dir exported_table
+    cd exported_table
+    biom convert -i feature-table.biom -o feature-table.txt --to-tsv
+    cd ..
+    
+We have just converted the feature table **table.qza** into **feature-table.biom**, which is useful for analysis with [Picrust](http://picrust.github.io/picrust/) or [Phyloseq](https://joey711.github.io/phyloseq/) for example, and **feature-table.txt** which can be visualized in any spreadsheet app.
+
+### 3- Align sequences and build a phylogenetic tree.
+
+Later we are going to calculate several diversity metrics and distances that will include phylogenetic information of the features (i.e. Unifrac and Faith’s Phylogenetic Diversity). In this step we are going to align the representative sequences of each feature and then buid a phylogenetic tree. This requires four steps: the alignment itself, denoising of highly variable positions and builidng and rooting the pylogenetic tree.
+
+&#x1F536; Step 1: Alignment
+
+    qiime alignment mafft \
+    --i-sequences DADA2/representative_sequences.qza \
+    --o-alignment aligned-rep-seqs-dada2.qza
+
+&#x1F536; Step 2: Filter alignment
+
+    qiime alignment mask \
+    --i-alignment aligned-rep-seqs-dada2.qza \
+    --o-masked-alignment masked-aligned-rep-seqs-dada2.qza
+    
+&#x1F536; Step 3: Buid the tree
+
+    qiime phylogeny fasttree \
+    --i-alignment masked-aligned-rep-seqs-dada2.qza \
+    --o-tree unrooted-tree.qza
+  
+&#x1F536; Step 4: Root the tree
+
+    qiime phylogeny midpoint-root \
+    --i-tree unrooted-tree.qza \
+    --o-rooted-tree rooted-tree.qza
+    
+These commands will not generate any visulization otuput.
+
+Now that we have the phylogenetic tree we are ready to calculate diversity.
 
 
 
