@@ -31,10 +31,7 @@ If you are interested in how to install QIIME2 on your own computer please follo
 
 We are going to follow this analysis workflow:
 
-![workflow](https://github.com/mbcarbonetto/qiime2-session/blob/masqiime phylogeny midpoint-root \
---i-tree unrooted-tree.qza \
---o-rooted-tree rooted-tree.qza
-#ter/hands_on_qiime2.png)
+![workflow](https://github.com/mbcarbonetto/qiime2-session/blob/master/hands_on_qiime2.png)
 
 **Note:** every task that you will perfom is going to be marked with this symbol &#x1F536;
 
