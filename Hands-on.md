@@ -336,6 +336,41 @@ You can now explore results, take into account:
 
 Note that you can sort samples by metadata and change colors and taxonomic levels. Morevoer, you can download figures and data in .csv format.
 
+#### 6- Test for differential abundances between groups of samples using ANCOM
+
+We can now explore if the differences observed in the plots for treated and untreated mice are statisticaly significant.
+In this case we will use [ANCOM](https://www.ncbi.nlm.nih.gov/pubmed/26028277) (Analysis of Composition of Microbiomes).
+This method accounts for the compositional nature of 16S data. In brief ANCOM adds a pseudocount to each count value and then compares the log ratio of the abundance of each taxon to the abundance of all the remaining  taxa one at a time. (Transformations  after [Aitchison 1986](https://scholar.google.com/scholar_lookup?author=J.+Aitchison+&publication_year=1986&title=The+Statistical+Analysis+of+Compositional+Data)).
+If you want to get a deeper insight into the problem of compositional data please read [this](https://www.frontiersin.org/articles/10.3389/fmicb.2017.02224/full#B2). if you want furhter detais on how ANCOM works please read [this](http://mortonjt.blogspot.pt/2016/06/ancom-explained.html).
+
+&#x1F536; We will test for differential abundances at the genus level. In order to do that, we need first to get the table of relative abundances of reads for each genera for each sample:
+
+    qiime taxa collapse \ 
+    --i-table DADA2/table.qza \ 
+    --i-taxonomy taxonomy.qza \
+    --p-level 6 \
+    --o-collapsed-table table-dada2-l6.qza
+    
+&#x1F536; ANCOM operates on table based on frequencies of features/taxa on a per-sample basis, but cannot tolerate frequencies of zero. To build this table or **composition artifact**we ned to add a pseudocount.
+
+    qiime composition add-pseudocount \ 
+    --i-table table-dada2-l6.qza \ 
+    --o-composition-table comp-table-dada2-l6.qza
+    
+&#x1F536; We are now ready to run the differential abundance test:
+
+    qiime composition ancom \ 
+    --i-table comp-table-dada2-l6.qza \ 
+    --m-metadata-file /home/Documents/working_dir/files/mapping_file.tsv \ 
+    --m-metadata-column AntibioticUsage \ 
+    --o-visualization l6-ancom-AntibioticUsage.qzv
+    
+&#x1F536; Let's take a look at the results:
+    
+:question: Which genus/genera differ in abundance between treated and untreated samples? In which group is each genus more abundant?
+
+**Note:** ANCOM does not report p-values but a table with information on the rejection (or not) of H0. They also provide the statistic "W" values and information of the distribution of data in percentiles for each tested group.
+ 
 
 
 
