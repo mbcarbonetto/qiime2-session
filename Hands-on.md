@@ -266,6 +266,10 @@ Several visualizarion files were created, you will have one **.qzv** file for ea
      
 You can do the same analysis for every distance matrix.
 
+Note: **PERMANOVA** is the default groups significance test, it tests whether the distances between samples within the same group are more similar to each other than distances to samples on other group. The null hypothesis tested by PERMANOVA is that, under the assumption of exchangeability of the sample units among the groups, H0: “the centroids of the groups, as defined in the space of the chosen resemblance measure, are equivalent for all groups.” Thus, if H0 were true, any observed differences among the centroids in a given set of data will be similar in size to what would be obtained under random allocation of individual sample units to the groups (i.e., under permutation).
+It is possible to choose **ANOSIM** method for testing group significance. ANOSIM is a modified version of the Mantel Test based on a standardized rank correlation between two distance matrices. The null hypothesis for the ANOSIM test is closely related to this, namely H0: “the average of the ranks of within-group distances is greater than or equal to the average of the ranks of between-group distances,” where a single ranking has been done across all inter-point distances in the distance matrix and the smallest distance (highest similarity) has a rank value of 1.
+For furhter reading clik [here](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/12-2010.1)
+
 We have not yet taken a look at alpha diversity results.
 
 &#x1F536; A good way to explore this is by making comparisons between groups of samples:
@@ -279,6 +283,7 @@ We have not yet taken a look at alpha diversity results.
 
 You can do the same analysis for every alpha diveristy metric calculated.
 
+Note:
 
 
 
