@@ -33,9 +33,9 @@ We are going to follow this analysis workflow:
 
 ![workflow](https://github.com/mbcarbonetto/qiime2-session/blob/master/hands_on_qiime2.png)
 
-**Note:** every task that you will perfom is going to be marked with this symbol &#x1F536;
+**Note:** - Every task that you will perfom is going to be marked with this symbol &#x1F536;
 
-   Questions to further analyse results will be marked with this symbol :question:
+   - Questions to further analyse results will be marked with this symbol :question:
 
 ### 0. Data set and input files
 
@@ -46,7 +46,7 @@ It is composed of ten **.fastq** files, one for each sample. Mice gut microbiota
 
 Besides the ![.fastq files](https://github.com/mbcarbonetto/qiime2-session/tree/master/files/fastq) you will find ![mapping_file.tsv](https://github.com/mbcarbonetto/qiime2-session/blob/master/files/mapping_file.tsv) This is a tab separated value table that includes metadata. The easiest way to make a mapping file is with a spreadsheet tool. However, Excel is not the best choice! It usually corrupts gene symbols, anything interpreted as dates,etc. Google Docs is prefered.
 This is how the mapping file looks like:
-![mapping_image](qiime2-session/mapping_vew.jpeg)
+![mapping_image](https://github.com/mbcarbonetto/qiime2-session/mapping_vew.jpeg)
 
 The column labels are always in the first row, **#** indicates that the line is not going to be read as a sample.
 Sample IDs must be in the first column, the rest of the columns include metadata. 
