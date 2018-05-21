@@ -46,7 +46,7 @@ It is composed of ten **.fastq** files, one for each sample. Mice gut microbiota
 
 Besides the ![.fastq files](https://github.com/mbcarbonetto/qiime2-session/tree/master/files/fastq) you will find ![mapping_file.tsv](https://github.com/mbcarbonetto/qiime2-session/blob/master/files/mapping_file.tsv) This is a tab separated value table that includes metadata. The easiest way to make a mapping file is with a spreadsheet tool. However, Excel is not the best choice! It usually corrupts gene symbols, anything interpreted as dates,etc. Google Docs is prefered.
 This is how the mapping file looks like:
-![mapping_image](https://github.com/mbcarbonetto/qiime2-session/mapping_vew.jpeg)
+![mapping_image](https://github.com/mbcarbonetto/qiime2-session/blob/master/mapping_view.jpg)
 
 The column labels are always in the first row, **#** indicates that the line is not going to be read as a sample.
 Sample IDs must be in the first column, the rest of the columns include metadata. 
