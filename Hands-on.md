@@ -270,7 +270,7 @@ You can do the same analysis for every distance matrix.
 
 Note: **PERMANOVA** is the default groups significance test, it tests whether the distances between samples within the same group are more similar to each other than distances to samples on other group. The null hypothesis tested by PERMANOVA is that, under the assumption of exchangeability of the sample units among the groups, H0: “the centroids of the groups, as defined in the space of the chosen resemblance measure, are equivalent for all groups.” Thus, if H0 were true, any observed differences among the centroids in a given set of data will be similar in size to what would be obtained under random allocation of individual sample units to the groups (i.e., under permutation).
 It is possible to choose **ANOSIM** method for testing group significance. ANOSIM is a modified version of the Mantel Test based on a standardized rank correlation between two distance matrices. The null hypothesis for the ANOSIM test is closely related to this, namely H0: “the average of the ranks of within-group distances is greater than or equal to the average of the ranks of between-group distances,” where a single ranking has been done across all inter-point distances in the distance matrix and the smallest distance (highest similarity) has a rank value of 1.
-For furhter reading clik [here](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/12-2010.1)
+For further reading clik [here](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/12-2010.1)
 
 We have not yet taken a look at alpha diversity results.
 
@@ -304,6 +304,37 @@ Taxonomic  classifiers perform best when they are trained based on your specific
     --i-reads DADA2/representative_sequences.qza \
     --o-classification taxonomy.qza
 
+&#x1F536; We need now to create visualization files to explore the results:
+ 
+     qiime metadata tabulate \
+     --m-input-file taxonomy.qza \
+     --o-visualization taxonomy.qzv
+     
+     qiime tools view visualization taxonomy.qzv
+     
+ This will output a table with each feature ID; its classification and the confidence level for the taxonomy assignment. Note that you can export a .tsv with these results.
+ 
+&#x1F536; You can also create a visualization file based on bar plots using the following command:
+
+    qiime taxa barplot \ 
+    --i-table DADA2/table.qza \ 
+    --i-taxonomy taxonomy.qza \ 
+    --m-metadata-file /home/Documents/working_dir/files/mapping_file.tsv \
+    --o-visualization taxa-bar-plots.qzv
+    
+    qiime tools view visualization taxa-bar-plots.qzv
+    
+You can now explore results, take into account:
+
+- Level 1 = Kingdom (e.g Bacteria)
+- Level 2 = Phylum (e.g Actinobacteria)
+- Level 3 = Class (e.g Actinobacteria)
+- Level 4 = Order (e.g Actinomycetales)
+- Level 5 = Family (e.g Streptomycetaceae)
+- Level 6 = Genus (e.g Streptomyces)
+- Level 7 = Species (e.g mirabilis)
+
+Note that you can sort samples by metadata and change colors and taxonomic levels. Morevoer, you can download figures and data in .csv format.
 
 
 
