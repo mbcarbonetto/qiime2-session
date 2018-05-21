@@ -33,9 +33,10 @@ We are going to follow this analysis workflow:
 
 ![workflow](https://github.com/mbcarbonetto/qiime2-session/blob/master/hands_on_qiime2.png)
 
-**Note:** - Every task that you will perfom is going to be marked with this symbol &#x1F536;
+**Note:** 
+- Every task that you will perfom is going to be marked with this symbol &#x1F536;
 
-   - Questions to further analyse results will be marked with this symbol :question:
+- Questions to further analyse results will be marked with this symbol :question:
 
 ### 0. Data set and input files
 
