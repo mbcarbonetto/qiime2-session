@@ -46,6 +46,7 @@ It is composed of ten **.fastq** files, one for each sample. Mice gut microbiota
 
 Besides the ![.fastq files](https://github.com/mbcarbonetto/qiime2-session/tree/master/files/fastq) you will find ![mapping_file.tsv](https://github.com/mbcarbonetto/qiime2-session/blob/master/files/mapping_file.tsv) This is a tab separated value table that includes metadata. The easiest way to make a mapping file is with a spreadsheet tool. However, Excel is not the best choice! It usually corrupts gene symbols, anything interpreted as dates,etc. Google Docs is prefered.
 This is how the mapping file looks like:
+
 ![mapping_image](https://github.com/mbcarbonetto/qiime2-session/blob/master/mapping_view.jpg)
 
 The column labels are always in the first row, **#** indicates that the line is not going to be read as a sample.
@@ -285,6 +286,22 @@ You can do the same analysis for every alpha diveristy metric calculated.
 
 Note: **qiime diversity alpha-group-significance** uses Kruskal-Wallis nonparametric test. It also reports results of pairwise comparisons, in this case we only have two groups, so pairwise comparisons are not needed.
 
+#### 5- Assign taxonomy to features with trained classifiers.
+
+We are now ready to follow next step and classify the respesnetative sequences of each feature. In order to to this, we are going to use a pre-trained classifier. We are going to use a classifier pre- trained with Greengenes 13_8 99% OTUs full-16S rRNA gene length sequences. This is the Greengenes database (last release *13_18*) aligned at 99% similarity.
+
+You will need to download **gg-13-8-99-nb-classifier.qza** from this [link](https://data.qiime2.org/2018.4/common/gg-13-8-99-nb-classifier.qza)
+
+QIIME2 developers also provide some other pre-trained classifiers based on Silva and other databases [here](https://docs.qiime2.org/2018.4/data-resources/)
+
+Taxonomic  classifiers perform best when they are trained based on your specific sample preparation and sequencing parameters, including the primers that were used for amplification and the length of your sequence reads. In this case, we are using a database based on the full-length 16S rRNA gene, but a customized database including just V3-V4 regions would probably be a better choice. We are not customizinmg the database or training the classifier in this tutorial, but you can find a detailed tutorial [here](https://docs.qiime2.org/2018.4/tutorials/feature-classifier/).
+
+&#x1F536; We are ready now to run the classification:
+
+    qiime feature-classifier classify-sklearn \ 
+    --i-classifier /home/Documents/working_dir/files/gg-13-8-99-nb-classifier.qza \  
+    --i-reads DADA2/representative_sequences.qza \
+    --o-classification taxonomy.qza
 
 
 
@@ -294,3 +311,6 @@ Note: **qiime diversity alpha-group-significance** uses Kruskal-Wallis nonparame
 
 
 
+
+
+ 
