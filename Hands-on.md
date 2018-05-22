@@ -53,9 +53,9 @@ This is how the mapping file looks like:
 
 The column labels are always in the first row, **#** indicates that the line is not going to be read as a sample.
 Sample IDs must be in the first column, the rest of the columns include metadata. 
-Sample IDs needs to be unique. 
--should be 36 characters long or less.
--should contain only ASCII alphanumeric characters (\[a-z]\, \[A-Z]\, or \[0-9]\), the period (.) character, or the dash (-) character.
+Sample IDs needs to be unique and: 
+- should be 36 characters long or less.
+- should contain only ASCII alphanumeric characters (\[a-z]\, \[A-Z]\, or \[0-9]\), the period (.) character, or the dash (-) character.
 
 Metadata columns can contain categorical or numerical values. They should also include labels.
 
