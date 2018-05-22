@@ -46,6 +46,7 @@ The test dataset we are going to use is originally from ![Batista et al. (2015)]
 It is composed of ten **.fastq** files, one for each sample. Mice gut microbiota was sampled under 2 conditions: under Streptomycin treatment and with no antibiotics treatment. The data set is composed of 5 replicates for each condition. Each file consist of 10,000 subsampled reads from the original fastq files. Reads are amplicons of the V3–V4 region of the 16S rRNA gene. They are single forward reads, already demultiplexed (one file/sample), with no primers and no barcodes.
 
 Besides the ![.fastq files](https://github.com/mbcarbonetto/qiime2-session/tree/master/files/fastq) you will find ![mapping_file.tsv](https://github.com/mbcarbonetto/qiime2-session/blob/master/files/mapping_file.tsv) This is a tab separated value table that includes metadata. The easiest way to make a mapping file is with a spreadsheet tool. However, Excel is not the best choice! It usually corrupts gene symbols, anything interpreted as dates,etc. Google Docs is prefered.
+
 This is how the mapping file looks like:
 
 ![mapping_image](https://github.com/mbcarbonetto/qiime2-session/blob/master/mapping_view.jpg)
@@ -370,14 +371,4 @@ If you want to get a deeper insight into the problem of compositional data pleas
 :question: Which genus/genera differ in abundance between treated and untreated samples? In which group is each genus more abundant?
 
 **Note:** ANCOM does not report p-values but a table with information on the rejection (or not) of H0. They also provide the statistic "W" values and information of the distribution of data in percentiles for each tested group.
- 
-
-
-
-
-
-
-
-
-
  
