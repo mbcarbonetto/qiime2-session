@@ -59,7 +59,7 @@ Sample IDs needs to be unique and:
 
 Metadata columns can contain categorical or numerical values. They should also include labels.
 
-You can follow this [link](https://docs.qiime2.org/2018.2/tutorials/metadata/) to learn more about metadata in QIIME2
+You can follow this [link](https://docs.qiime2.org/2018.4/tutorials/metadata/) to learn more about metadata in QIIME2
 
 Even if we are not doing it during this session, it is good practice to perform a validation of the mapping file.
 To do that you can use Keemei, which is a  Google Sheets add-on for validating tabular bioinformatics file formats.
@@ -99,7 +99,7 @@ In order to create the artifact with the cointerrrect metadata (source and type 
 
 With this command we are telling QIIME2 which **semantic type** (--type) to follow and what **source** (--source) of data we are importing. We are algo giving the path to the **input** fastq files with the manifest file (--input-path). Finally we are telling QIIME2 where to create the **output** file (--output-path) which will be called **single-end-demux.qza**
 
-There are many other types of data that can be imported to QIIME2, each will have a different semantic type asigned and different protocols will be used to import them. Please follow [this link](https://docs.qiime2.org/2018.2/semantic-types/) for more information on semantic types in QIIME2 and [this one](https://docs.qiime2.org/2018.2/tutorials/importing/) to learn how to import different types of data.
+There are many other types of data that can be imported to QIIME2, each will have a different semantic type asigned and different protocols will be used to import them. Please follow [this link](https://docs.qiime2.org/2018.4/semantic-types/) for more information on semantic types in QIIME2 and [this one](https://docs.qiime2.org/2018.4/tutorials/importing/) to learn how to import different types of data.
 
 Note: QIIME2 has a different argument structure than the previous QIIME version. We need to write first the command **qiime**, then the **plugin** name, then the **method** name and then the **arguments** (input, output and parameters). So, we need to follow this structure (the order is not important):
 
