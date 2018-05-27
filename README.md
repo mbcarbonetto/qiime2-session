@@ -14,17 +14,17 @@ PhD students and post-doctoral researchers who are planning to use Illumina base
 
 ## Learning objectives
 
--Basic concepts of Microbial diversity analysis.
+  .Basic concepts of Microbial diversity analysis.
 
--Do quality filtering, denoising and picking of features and representative sequences with DADA2
+  .Do quality filtering, denoising and picking of features and representative sequences with DADA2
 
--Assign taxonomy to features with trained classifiers.
+  .Assign taxonomy to features with trained classifiers.
 
--Align sequences and infer phylogeny.
+  .Align sequences and infer phylogeny.
 
--Calculate alpha and beta diversity.
+  .Calculate alpha and beta diversity.
 
--Test for differential abundances between groups of samples using ANCOM.
+  .Test for differential abundances between groups of samples using ANCOM.
 
 ## Learning outcomes
 
