@@ -14,7 +14,7 @@ PhD students and post-doctoral researchers who are planning to use Illumina base
 
 ## Learning objectives
 
--Learn what *diversity* is. Understand concepts of alpha (richness and evenness) and beta diversity.
+-Basic concepts of Microbial diversity analysis.
 
 -Do quality filtering, denoising and picking of features and representative sequences with DADA2
 
