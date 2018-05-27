@@ -69,12 +69,12 @@ PhD students and post-doctoral researchers who are planning to use Illumina base
 ####     LO7.2- Decide on the subsampling depth to use for diversity calculations. How many samples are excluded?
 
 ####     LO7.3- Run diverstiy analysis and explore results. 
-         7.3.1- Can you observe any community structure defined by metadata categories? Is this grouping statistically   significant? Can you observe the same results for all calculated distances?
-         7.3.2 Which categories in metadata are most strongly associated with the differences in microbial community richness? Are these differences statistically significant? Can you observe the same results for all diveristy metrics?
+         7.3.1 - Can you observe any community structure defined by metadata categories? Is this grouping statistically   significant? Can you observe the same results for all calculated distances?
+         7.3.2 - Which categories in metadata are most strongly associated with the differences in microbial community richness? Are these differences statistically significant? Can you observe the same results for all diveristy metrics?
           
 ### LO8- Perform taxonomic classification and analysis
 
 ####     LO8.1- Describe the classification method available. What is needed to train the classifiers?
 
 ####     LO8.2- Perform differential abundance analysis using ANCOM
-         8.2.1 Which features differ in abundance across the factor selected for the analysis?
+         8.2.1 - Which features differ in abundance across the factor selected for the analysis?
