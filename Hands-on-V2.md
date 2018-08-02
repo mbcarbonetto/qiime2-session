@@ -41,7 +41,11 @@ We are going to follow this analysis workflow:
 
 ### 0. Data set and input files
 
-&#x1F536; You will need to download the files we will use in this session from this [link](https://github.com/mbcarbonetto/qiime2-session/hands_on_files.zip)
+&#x1F536; You will need to download the files we will use in this session from this [link](https://github.com/mbcarbonetto/qiime2-session/blob/master/hands_on_files.zip). 
+
+&#x1F536; You will need to unzip the file:
+
+    unzip ~/Downloads/hands_on_files.zip -d hands_on_files
 
 The test dataset we are going to use is originally from [Batista et al. (2015)](https://www.nature.com/articles/ncomms9945)
 It is composed of ten **.fastq** files, one for each sample. Mice gut microbiota was sampled under 2 conditions: under Streptomycin treatment and with no antibiotics treatment. The data set is composed of 5 replicates for each condition. Each file consist of 10,000 subsampled reads from the original fastq files. Reads are amplicons of the V3–V4 region of the 16S rRNA gene. They are single forward reads, already demultiplexed (one file/sample), with no primers and no barcodes.
@@ -80,9 +84,9 @@ Instructions for installation and usage can be found [here](https://keemei.qiime
 
     mkdir working_dir
 
-&#x1F536; You can also move the [input files](https://github.com/mbcarbonetto/qiime2-session/) you heve already dowloaded to this folder:
+&#x1F536; You can also move the [input files](https://github.com/mbcarbonetto/qiime2-session/blob/master/hands_on_files.zip) you heve already dowloaded to this folder:
 
-    mv ~/Downloads/files/ working_dir/
+    mv ~/Downloads/hands_on_files/ working_dir/
 
 All data that is used as input to QIIME2 should be in form of QIIME2 artifacts, which contain information about the type of data and the source of the data. So, the first thing we need to do is import the sequence data files into a QIIME2 artifact.
 The semantic type of our data is **SampleData[SequencesWithQuality]**, i.e *Sequences with quality scores (.fastq files), where each set of sequences is associated with a sample identifier (i.e. demultiplexed sequences, each file is a sample).*
