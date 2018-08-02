@@ -84,9 +84,10 @@ Instructions for installation and usage can be found [here](https://keemei.qiime
 
     mkdir working_dir
 
-&#x1F536; You can also move the [input files](https://github.com/mbcarbonetto/qiime2-session/blob/master/hands_on_files.zip) you heve already dowloaded to this folder:
+&#x1F536; You can also move the [input files](https://github.com/mbcarbonetto/qiime2-session/blob/master/hands_on_files.zip) you heve already dowloaded to this folder. You then move into the working directory.
 
     mv ~/Downloads/hands_on_files/ working_dir/
+    cd working_dir
 
 All data that is used as input to QIIME2 should be in form of QIIME2 artifacts, which contain information about the type of data and the source of the data. So, the first thing we need to do is import the sequence data files into a QIIME2 artifact.
 The semantic type of our data is **SampleData[SequencesWithQuality]**, i.e *Sequences with quality scores (.fastq files), where each set of sequences is associated with a sample identifier (i.e. demultiplexed sequences, each file is a sample).*
@@ -98,8 +99,8 @@ In order to create the artifact with the cointerrrect metadata (source and type 
 
     qiime tools import \
     --type 'SampleData[SequencesWithQuality]' \
-    --input-path /home/Documents/working_dir/files/manifest.txt \
-    --output-path /home/Documents/working_dir/single-end-demux.qza \
+    --input-path hands_on_files/manifest.txt \
+    --output-path single-end-demux.qza \
     --source-format SingleEndFastqManifestPhred33
 
 With this command we are telling QIIME2 which **semantic type** (--type) to follow and what **source** (--source) of data we are importing. We are algo giving the path to the **input** fastq files with the manifest file (--input-path). Finally we are telling QIIME2 where to create the **output** file (--output-path) which will be called **single-end-demux.qza**
