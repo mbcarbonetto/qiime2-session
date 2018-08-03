@@ -131,7 +131,7 @@ This visualization allows to explore descriptive statistics of the sample sizes 
 
 For our data set, the **Overvirew** information is not very informative since we know beforehand that all samples have the same size (10,000 reads). However, take a look at que **Interactive Quality Plot**:
 
-:question: what is the read size when quality falls below Q20? (Take note of this number)
+:question: what is the read size when quality falls below Q20? (Take a look at the value in the 25th percentile and take note of this number)
 
 ### 2.Quality filtering, denoising and feature picking using DADA2
 
@@ -143,8 +143,8 @@ You can get further details on the method [here](https://www.nature.com/articles
 
     qiime dada2 denoise-single \
     --i-demultiplexed-seqs single-end-demux.qza \
-    --p-trunc-len 235 \
-    --p-trunc-q 0 \
+    --p-trunc-len 240 \
+    --p-trunc-q 2 \
     --output-dir DADA2
 
 This command may take up to 30 minutes to run.
@@ -158,18 +158,20 @@ This command may take up to 30 minutes to run.
 
 - Which criteria are we using to filter data by quality? Why?
 
-     **Answer:** We decided to trim sequences at 235 bp because we can see in the *Interactive Quality Plot* that this is the position where Phred score falls below Q20. We could have trimmed reads based on *-p-trunc-q 20*. This would have delivered a dataset with reads with length variation and DADA2 does not handle this correctly.
+     **Answer:** We decided to trim sequences at 240 bp because we can see in the *Interactive Quality Plot* that this is the position where Phred score falls below Q20. We could have choosen to trim reads based on *-p-trunc-q 20*. This would have delivered a dataset with reads with length variation and DADA2 does not handle this correctly, so a trimming using the *--p-trunc-len* parameter is prefered.
 
 - Are we remmoving chimeras? If so, which method are we using?
 
 - What are you expecting as output files?
+
+    **Hint**: use the --help parameter
 
 &#x1F536; You can now crate a summary of the results and visualize it using *qiime tools view**
 
     qiime feature-table summarize \
     --i-table DADA2/table.qza \
     --o-visualization DADA2/table-dada2.qzv \
-    --m-sample-metadata-file /home/Documents/working_dir/files/mapping_file.tsv
+    --m-sample-metadata-file hands_on_files/mapping_file.tsv
     
     qiime tools view DADA2/table-dada2.qzv
 
@@ -179,8 +181,8 @@ This command may take up to 30 minutes to run.
 - How many reads remain after quality filtering?
 - Which sample has the minimum frequency of reads? and the maximum?
 
-We have now the feature table: **table.qza**, and we have assigned a representative sequence for each feature: **representative_sequences.qza**.
-Before we continue with the analysis we can export the feature table son we can explore data with another software if needed.
+We have now a feature table: **table.qza**, and we have assigned a representative sequence for each feature: **representative_sequences.qza**.
+Before we continue with the analysis we can export the feature table so we can explore data with other software if needed.
 
 &#x1F536; In order to export **table.qza** run:
 
@@ -189,7 +191,7 @@ Before we continue with the analysis we can export the feature table son we can 
     biom convert -i feature-table.biom -o feature-table.txt --to-tsv
     cd ..
     
-We have just converted the fhereeature table **table.qza** into **feature-table.biom**, which is useful for analysis with [Picrust](http://picrust.github.io/picrust/) or [Phyloseq](https:/qiime diversity core-metrics-phylogeneticjoey711.github.io/phyloseq/) for example, and **feature-table.txt** which can be visualized in any spreadsheet app.
+We have just converted the feature table **table.qza** into **feature-table.biom**, which is useful for analysis with [Picrust](http://picrust.github.io/picrust/) or [Phyloseq](https:/qiime diversity core-metrics-phylogeneticjoey711.github.io/phyloseq/) for example, and **feature-table.txt** which can be visualized in any spreadsheet app.
 
 ### 3- Align sequences and build a phylogenetic tree.
 
@@ -241,20 +243,20 @@ Using a single command we are going to calculate the following metrics:
 
 &#x1F536; Run the following command to calculate diveristy:
 
-      qiime diversity core-metrics-phylogenetic \ 
-      --i-phylogeny rooted-tree.qza \ 
-      --i-table DADA2/table.qza \ 
-      --p-sampling-depth 5474 \
-      --m-metadata-file /home/Documents/working_dir/files/mapping_file.tsv \
+      qiime diversity core-metrics-phylogenetic \
+      --i-phylogeny rooted-tree.qza \
+      --i-table DADA2/table.qza \
+      --p-sampling-depth 6185 \
+      --m-metadata-file hands_on_files/mapping_file.tsv \
       --output-dir core-metrics-results
 
-:question: Can you tell why **--p-sampling-depth** was set to **5474**?
+:question: Can you tell why **--p-sampling-depth** was set to **6185**?
 
-This value was chosen based on the number of sequences in the **WT.day3.15** which is the one sample that has *fewer sequences*. Because most diversity metrics are sensitive to different sampling depths across different samples,we need to normalize data based on some criterium. Sub-sampling without replacement up to minimum sample size is one way to deal with this. This is probably not the best solution, but the most frequently used and accepted so far.
+   **Answer:** This value was chosen based on the number of sequences in the **WT.day3.15** which is the one sample that has *fewer sequences*. Because most diversity metrics are sensitive to different sampling depths across different samples,we need to normalize data based on some criterium. Sub-sampling without replacement up to minimum sample size is one way to deal with this. This is probably not the best solution, but the most frequently used and accepted so far.
 
 This script will randomly subsample the counts from each sample to the value provided for this parameter. For example, if you provide --p-sampling-depth 500, this step will subsample the counts in each sample without replacement so that each sample in the resulting table has a total count of 500. If the total count for any sample(s) are smaller than this value, those samples will be dropped from the diversity analysis. Choosing this value is tricky. You can make this choice by reviewing the information presented in the **table.qzv** file that was created above and choosing a value that is as high as possible (so you retain more sequences per sample) while excluding as few samples as possible.
 
-Several visualizarion files were created, you will have one **.qzv** file for each beta diveristy metric that was calculated. 
+Several visualization files were created, you will have one **.qzv** file for each beta diveristy metric that was calculated. 
 
 &#x1F536; You can explore results using **qiime tools view**
 
@@ -266,16 +268,16 @@ Several visualizarion files were created, you will have one **.qzv** file for ea
 
 &#x1F536; We can now test for the significance of these grouping by using the following command:
 
-    qiime diversity beta-group-significance \ 
-    --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \ 
-    --m-metadata-file /home/Documents/working_dir/files/mapping_file.tsv \ 
-    --m-metadata-column AntibioticUsage \ 
+    qiime diversity beta-group-significance \
+    --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+    --m-metadata-file hands_on_files/mapping_file.tsv \
+    --m-metadata-column AntibioticUsage \
     --o-visualization core-metrics-results/unweighted_unifrac_AntibioticUsage-significance.qzv
     qiime tools view core-metrics-results/unweighted_unifrac_AntibioticUsage-significance.qzv
      
 You can do the same analysis for every distance matrix.
 
-Note: **PERMANOVA** is the default groups significance test, it tests whether the distances between samples within the same group are more similar to each other than distances to samples on other group. The null hypothesis tested by PERMANOVA is that, under the assumption of exchangeability of the sample units among the groups, H0: “the centroids of the groups, as defined in the space of the chosen resemblance measure, are equivalent for all groups.” Thus, if H0 were true, any observed differences among the centroids in a given set of data will be similar in size to what would be obtained under random allocation of individual sample units to the groups (i.e., under permutation).
+Note: **PERMANOVA** tests whether the distances between samples within the same group are more similar to each other than distances to samples on other group. The null hypothesis tested by PERMANOVA is that, under the assumption of exchangeability of the sample units among the groups, H0: “the centroids of the groups, as defined in the space of the chosen resemblance measure, are equivalent for all groups.” Thus, if H0 were true, any observed differences among the centroids in a given set of data will be similar in size to what would be obtained under random allocation of individual sample units to the groups (i.e., under permutation).
 It is possible to choose **ANOSIM** method for testing group significance. ANOSIM is a modified version of the Mantel Test based on a standardized rank correlation between two distance matrices. The null hypothesis for the ANOSIM test is closely related to this, namely H0: “the average of the ranks of within-group distances is greater than or equal to the average of the ranks of between-group distances,” where a single ranking has been done across all inter-point distances in the distance matrix and the smallest distance (highest similarity) has a rank value of 1.
 For further reading clik [here](https://esajournals.onlinelibrary.wiley.com/doi/full/10.1890/12-2010.1)
 
@@ -283,10 +285,11 @@ We have not yet taken a look at alpha diversity results.
 
 &#x1F536; A good way to explore this is by making comparisons between groups of samples:
 
-    qiime diversity alpha-group-significance \ 
-    --i-alpha-diversity core-metrics-results/observed_otus_vector.qza \ 
-    --m-metadata-file /home/Documents/working_dir/files/mapping_file.tsv \
+    qiime diversity alpha-group-significance \
+    --i-alpha-diversity core-metrics-results/observed_otus_vector.qza \
+    --m-metadata-file hands_on_files/mapping_file.tsv \
     --o-visualization core-metrics-results/observed_otus_vector-group-significance.qzv
+    qiime tools view core-metrics-results/observed_otus_vector-group-significance.qzv
    
 :question: Is richnnes different between *Streptomycin treated* and *untreated* samples?
 
@@ -298,7 +301,7 @@ Note: **qiime diversity alpha-group-significance** uses Kruskal-Wallis nonparame
 
 We are now ready to follow next step and classify the respesnetative sequences of each feature. In order to to this, we are going to use a pre-trained classifier. We are going to use a classifier pre- trained with Greengenes 13_8 99% OTUs full-16S rRNA gene length sequences. This is the Greengenes database (last release *13_18*) aligned at 99% similarity.
 
-You will need to download **gg-13-8-99-nb-classifier.qza** from this [link](https://data.qiime2.org/2018.4/common/gg-13-8-99-nb-classifier.qza)
+You will need to download **gg-13-8-99-nb-classifier.qza** from this [link](https://data.qiime2.org/2018.4/common/gg-13-8-99-nb-classifier.qza). Please copy the file to *hands_on_files* folder.
 
 QIIME2 developers also provide some other pre-trained classifiers based on Silva and other databases [here](https://docs.qiime2.org/2018.4/data-resources/)
 
@@ -306,8 +309,8 @@ Taxonomic  classifiers perform best when they are trained based on your specific
 
 &#x1F536; We are ready now to run the classification:
 
-    qiime feature-classifier classify-sklearn \ 
-    --i-classifier /home/Documents/working_dir/files/gg-13-8-99-nb-classifier.qza \  
+    qiime feature-classifier classify-sklearn \
+    --i-classifier hands_on_files/gg-13-8-99-nb-classifier.qza \
     --i-reads DADA2/representative_sequences.qza \
     --o-classification taxonomy.qza
 
@@ -317,19 +320,19 @@ Taxonomic  classifiers perform best when they are trained based on your specific
      --m-input-file taxonomy.qza \
      --o-visualization taxonomy.qzv
      
-     qiime tools view visualization taxonomy.qzv
+     qiime tools view taxonomy.qzv
      
  This will output a table with each feature ID; its classification and the confidence level for the taxonomy assignment. Note that you can export a .tsv with these results.
  
 &#x1F536; You can also create a visualization file based on bar plots using the following command:
 
-    qiime taxa barplot \ 
-    --i-table DADA2/table.qza \ 
-    --i-taxonomy taxonomy.qza \ 
-    --m-metadata-file /home/Documents/working_dir/files/mapping_file.tsv \
+    qiime taxa barplot \
+    --i-table DADA2/table.qza \
+    --i-taxonomy taxonomy.qza \
+    --m-metadata-file hands_on_files/mapping_file.tsv \
     --o-visualization taxa-bar-plots.qzv
     
-    qiime tools view visualization taxa-bar-plots.qzv
+    qiime tools view taxa-bar-plots.qzv
     
 You can now explore results, take into account:
 
@@ -352,25 +355,27 @@ If you want to get a deeper insight into the problem of compositional data pleas
 
 &#x1F536; We will test for differential abundances at the genus level. In order to do that, we need first to get the table of relative abundances of reads for each genera for each sample:
 
-    qiime taxa collapse \ 
-    --i-table DADA2/table.qza \ 
+    qiime taxa collapse \
+    --i-table DADA2/table.qza \
     --i-taxonomy taxonomy.qza \
     --p-level 6 \
     --o-collapsed-table table-dada2-l6.qza
     
 &#x1F536; ANCOM operates on table based on frequencies of features/taxa on a per-sample basis, but cannot tolerate frequencies of zero. To build this table or **composition artifact**we ned to add a pseudocount.
 
-    qiime composition add-pseudocount \ 
-    --i-table table-dada2-l6.qza \ 
+    qiime composition add-pseudocount \
+    --i-table table-dada2-l6.qza \
     --o-composition-table comp-table-dada2-l6.qza
     
 &#x1F536; We are now ready to run the differential abundance test:
 
-    qiime composition ancom \ 
-    --i-table comp-table-dada2-l6.qza \ 
-    --m-metadata-file /home/Documents/working_dir/files/mapping_file.tsv \ 
-    --m-metadata-column AntibioticUsage \ 
+    qiime composition ancom \
+    --i-table comp-table-dada2-l6.qza \
+    --m-metadata-file hands_on_files/mapping_file.tsv \
+    --m-metadata-column AntibioticUsage \
     --o-visualization l6-ancom-AntibioticUsage.qzv
+    
+    qiime tools view l6-ancom-AntibioticUsage.qzv
     
 &#x1F536; Let's take a look at the results:
     
