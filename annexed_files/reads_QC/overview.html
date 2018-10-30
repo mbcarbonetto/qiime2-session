@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>q2_demux : summarize</title>
+    <link rel="stylesheet" href="./q2templateassets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./q2templateassets/css/normalize.css"/>
+    <script src="./q2templateassets/js/child.js"></script>
+    
+    
+  </head>
+  <body>
+    <div class="container-fluid">
+        
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Demultiplexed sequence counts summary</h1>
+        <table class="table table-striped table-hover">
+            <tr><td>Minimum:</td><td>10000</td></tr>
+            <tr><td>Median:</td><td>10000.0</td></tr>
+            <tr><td>Mean:</td><td>10000.0</td></tr>
+            <tr><td>Maximum:</td><td>10000</td></tr>
+            <tr><td>Total:</td><td>100000</td></tr>
+        </table>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <a href="demultiplex-summary.pdf">
+            <img src="demultiplex-summary.png">
+            <p>Download as PDF</p>
+        </a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Per-sample sequence counts</h1>
+        <h4>Total Samples: 10</h4>
+        <table border="0" class="dataframe table table-striped table-hover">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sequence count</th>
+    </tr>
+    <tr>
+      <th>Sample name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>WT.unt.7</th>
+      <td>10000</td>
+    </tr>
+    <tr>
+      <th>WT.unt.4</th>
+      <td>10000</td>
+    </tr>
+    <tr>
+      <th>WT.unt.3</th>
+      <td>10000</td>
+    </tr>
+    <tr>
+      <th>WT.unt.2</th>
+      <td>10000</td>
+    </tr>
+    <tr>
+      <th>WT.unt.1</th>
+      <td>10000</td>
+    </tr>
+    <tr>
+      <th>WT.day3.9</th>
+      <td>10000</td>
+    </tr>
+    <tr>
+      <th>WT.day3.15</th>
+      <td>10000</td>
+    </tr>
+    <tr>
+      <th>WT.day3.14</th>
+      <td>10000</td>
+    </tr>
+    <tr>
+      <th>WT.day3.13</th>
+      <td>10000</td>
+    </tr>
+    <tr>
+      <th>WT.day3.11</th>
+      <td>10000</td>
+    </tr>
+  </tbody>
+</table>
+        <a href="per-sample-fastq-counts.csv">Download as CSV</a>
+    </div>
+</div>
+
+    </div>
+  </body>
+</html>
