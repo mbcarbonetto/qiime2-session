@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>q2_feature_table : summarize</title>
+    <link rel="stylesheet" href="./q2templateassets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./q2templateassets/css/normalize.css"/>
+    <script src="./q2templateassets/js/child.js"></script>
+    
+  <script src="./dist/vendor.bundle.js"></script>
+
+  </head>
+  <body>
+    <div class="container-fluid">
+        
+  <div class="row">
+    <div class="form-group col-lg-2 col-md-2 col-sm-12 col-xs-12">
+      <label for="slider-value">Sampling depth:</label>
+      <input
+        id="slider-value"
+        class="form-control"
+        type="number"
+        min="0"
+      >
+      <div>(Zero implies no even sampling.)</div>
+      <br>
+      <input
+        id="slider"
+        type="range"
+        value="0"
+        min="0"
+        max="8104.0"
+      >
+      <br>
+    </div>
+    <div id="histogram" class="col-lg-10 col-md-10 col-sm-12 col-xs-12"></div>
+  </div>
+  <div class="row">
+    <div id="table" class="col-lg-10 col-md-10 col-sm-12 col-xs-12 pull-right"></div>
+  </div>
+  <script src='./dist/bundle.js'></script>
+  <script src='./data.jsonp'></script>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>q2_feature_table : summarize</title>
+    <link rel="stylesheet" href="./q2templateassets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="./q2templateassets/css/normalize.css"/>
+    <script src="./q2templateassets/js/child.js"></script>
+    
+    
+  </head>
+  <body>
+    <div class="container-fluid">
+        
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Table summary</h1>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Sample</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Number of samples</th>
+              <td>10</td>
+            </tr>
+            <tr>
+              <th scope="row">Number of features</th>
+              <td>516</td>
+            </tr>
+            <tr>
+              <th scope="row">Total frequency</th>
+              <td>70,106</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <h1>Frequency per sample</h1>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <table border="0" class="dataframe table table-striped table-hover">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Frequency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Minimum frequency</th>
+      <td>6,112.0</td>
+    </tr>
+    <tr>
+      <th>1st quartile</th>
+      <td>6,676.5</td>
+    </tr>
+    <tr>
+      <th>Median frequency</th>
+      <td>6,936.0</td>
+    </tr>
+    <tr>
+      <th>3rd quartile</th>
+      <td>7,423.5</td>
+    </tr>
+    <tr>
+      <th>Maximum frequency</th>
+      <td>8,104.0</td>
+    </tr>
+    <tr>
+      <th>Mean frequency</th>
+      <td>7,010.6</td>
+    </tr>
+  </tbody>
+</table>
+        <p class="text-left">
+          Frequency per sample detail (<a href="sample-frequency-detail.csv">csv</a> |
+          <a href="sample-frequency-detail.html">html</a>)
+        </p>
+      </div>
+      
+      <div class="col-lg-6">
+        <p class="text-center">
+            <a href="sample-frequencies.pdf">
+                <img src="sample-frequencies.png" width="700" height="500" class="center-block">
+                <br>
+                <p class="text-center">Download as PDF</p>
+            </a>
+        </p>
+      </div>
+      
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <h1>Frequency per feature</h1>
+        <table border="0" class="dataframe table table-striped table-hover">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Frequency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Minimum frequency</th>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>1st quartile</th>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>Median frequency</th>
+      <td>42.0</td>
+    </tr>
+    <tr>
+      <th>3rd quartile</th>
+      <td>101.0</td>
+    </tr>
+    <tr>
+      <th>Maximum frequency</th>
+      <td>5,210.0</td>
+    </tr>
+    <tr>
+      <th>Mean frequency</th>
+      <td>135.86434108527132</td>
+    </tr>
+  </tbody>
+</table>
+        <p class="text-left">
+          Frequency per feature detail (<a href="feature-frequency-detail.csv">csv</a> |
+          <a href="feature-frequency-detail.html">html</a>)
+        </p>
+      </div>
+      
+      <div class="col-lg-6">
+        <p class="text-center">
+            <a href="feature-frequencies.pdf">
+                <img src="feature-frequencies.png" width="700" height="500" class="center-block">
+                <br>
+                <p class="text-center">Download as PDF</p>
+            </a>
+        </p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+    </div>
+  </body>
+</html>
