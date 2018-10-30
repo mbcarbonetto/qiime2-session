@@ -26,7 +26,7 @@ output: html_document
 
 **Note:** QIIME2 has already been installed in your working station in order to follow this tutorial.
 
-If you are interested in how to install QIIME2 on your own computer please follow [this](https://docs.qiime2.org/2018.2/install/) link.
+If you are interested in how to install QIIME2 on your own computer please follow [this](https://docs.qiime2.org/2018.8/install/) link.
 
 ### Core workflow:
 
@@ -35,7 +35,7 @@ We are going to follow this analysis workflow:
 ![workflow](https://github.com/mbcarbonetto/qiime2-session/blob/master/hands_on_qiime2.png)
 
 **Note:** 
-- Every task that you will perfom is going to be marked with &#x1F536;
+- Every task that you will perfom is marked with &#x1F536;
 
 - Questions to further analyse results will be marked with :question:
 
@@ -47,7 +47,7 @@ We are going to follow this analysis workflow:
 
     unzip ~/Downloads/hands_on_files.zip -d hands_on_files
 
-The test dataset we are going to use is originally from [Batista et al. (2015)](https://www.nature.com/articles/ncomms9945)
+The test dataset we are going to use is originally from [Batista et al. (2015)](https://www.nature.com/articles/ncomms9945).
 It is composed of ten **.fastq** files, one for each sample. Mice gut microbiota was sampled under 2 conditions: under Streptomycin treatment and with no antibiotics treatment. The data set is composed of 5 replicates for each condition. Each file consist of 10,000 subsampled reads from the original fastq files. Reads are amplicons of the V3–V4 region of the 16S rRNA gene. They are single forward reads, already demultiplexed (one file/sample), with no primers and no barcodes.
 
 Besides the *.fastq* files you will find *mapping_file.tsv*. This is a tab separated value table that includes metadata. The easiest way to make a mapping file is with a spreadsheet tool. However, Excel is not the best choice! It usually corrupts gene symbols, anything interpreted as dates,etc. Google Docs is prefered.
@@ -62,9 +62,9 @@ Sample IDs needs to be unique and:
 - should be 36 characters long or less.
 - should contain only ASCII alphanumeric characters (\[a-z]\, \[A-Z]\, or \[0-9]\), the period (.) character, or the dash (-) character.
 
-Metadata columns can contain categorical or numerical values. They should also include labels.
+Metadata columns can contain categorical or numerical values. They must also include labels.
 
-You can follow this [link](https://docs.qiime2.org/2018.4/tutorials/metadata/) to learn more about metadata in QIIME2
+You can follow this [link](https://docs.qiime2.org/2018.8/tutorials/metadata/) to learn more about metadata in QIIME2
 
 Even if we are not doing it during this session, it is good practice to perform a validation of the mapping file.
 To do that you can use Keemei, which is a  Google Sheets add-on for validating tabular bioinformatics file formats.
@@ -78,7 +78,7 @@ Instructions for installation and usage can be found [here](https://keemei.qiime
 
 &#x1F536; Then type:
 
-    source activate qiime2-2018.4
+    source activate qiime2-2018.8
 
 &#x1F536; We are now creating a working directory where we are going to place the output files of this session:
 
@@ -89,11 +89,11 @@ Instructions for installation and usage can be found [here](https://keemei.qiime
     mv ~/Downloads/hands_on_files/ working_dir/
     cd working_dir
 
-All data that is used as input to QIIME2 should be in form of QIIME2 artifacts, which contain information about the type of data and the source of the data. So, the first thing we need to do is import the sequence data files into a QIIME2 artifact.
+All data that is used as input to QIIME2 should be in form of QIIME2 artifacts, which contain information about the type of data and the format of the data. So, the first thing we need to do is import the sequence data files into a QIIME2 artifact.
 The semantic type of our data is **SampleData[SequencesWithQuality]**, i.e *Sequences with quality scores (.fastq files), where each set of sequences is associated with a sample identifier (i.e. demultiplexed sequences, each file is a sample).*
-In order to create the artifact with the cointerrrect metadata (source and type of data) we need a *manifest* file. This file will indicate the sample ID, the location of each file and the direction of the reads, in our case forward reads.
+In order to create an artifact we need a *manifest* file. This file will indicate the sample ID, the location of each fastq file and the direction of the reads, in our case just forward reads.
 
-&#x1F536; Please complete the file with the correct path for each fastq file in your computer (replace "completePATH" for the real path).
+&#x1F536; Please complete the file with the correct path for each fastq file in your computer (replace "completePATH" for the real path). **Hint: the complete path starts with /home/**
 
 &#x1F536; We are now ready to create a QIIME2 artifact with our data:
 
@@ -101,13 +101,13 @@ In order to create the artifact with the cointerrrect metadata (source and type 
     --type 'SampleData[SequencesWithQuality]' \
     --input-path hands_on_files/manifest.txt \
     --output-path single-end-demux.qza \
-    --source-format SingleEndFastqManifestPhred33
+    --input-format SingleEndFastqManifestPhred33
 
-With this command we are telling QIIME2 which **semantic type** (--type) to follow and what **source** (--source) of data we are importing. We are algo giving the path to the **input** fastq files with the manifest file (--input-path). Finally we are telling QIIME2 where to create the **output** file (--output-path) which will be called **single-end-demux.qza**
+With this command we are telling QIIME2 which **semantic type** (--type) to follow and what **format** (--input-format) of data we are importing. We are algo giving the path to the **input** fastq files with the manifest file (--input-path). Finally we are telling QIIME2 where to create the **output** file (--output-path) which will be called **single-end-demux.qza**
 
-There are many other types of data that can be imported to QIIME2, each will have a different semantic type asigned and different protocols will be used to import them. Please follow [this link](https://docs.qiime2.org/2018.4/semantic-types/) for more information on semantic types in QIIME2 and [this one](https://docs.qiime2.org/2018.4/tutorials/importing/) to learn how to import different types of data.
+There are many other types of data that can be imported to QIIME2, each will have a different semantic type asigned and different protocols will be used to import them. Please follow [this link](https://docs.qiime2.org/2018.8/semantic-types/) for more information on semantic types in QIIME2 and [this one](https://docs.qiime2.org/2018.8/tutorials/importing/) to learn how to import different types of data.
 
-Note: QIIME2 has a different argument structure than the previous QIIME version. We need to write first the command **qiime**, then the **plugin** name, then the **method** name and then the **arguments** (input, output and parameters). So, we need to follow this structure (the order is not important):
+Note: QIIME2 has a different argument structure than the previous QIIME version. We need to write first the command **qiime**, then the **plugin** name, then the **method** name and then the **arguments** (input, output and parameters). So, we need to follow this structure (the order of arguments is not important):
 
     qiime plugin method \
     --i-<input>
@@ -127,11 +127,19 @@ All QIIME2 visualizers (i.e., commands that take a --o-visualization parameter) 
 
     qiime tools view single-end-demux.qzv
 
+If you have not performed this step just click here to take a look at the results.
+
 This visualization allows to explore descriptive statistics of the sample sizes (i.e. min, max, median, mean, histogram) and samples quality based on Quality Score per base.
 
 For our data set, the **Overvirew** information is not very informative since we know beforehand that all samples have the same size (10,000 reads). However, take a look at que **Interactive Quality Plot**:
 
 :question: what is the read size when quality falls below Q20? (Take a look at the value in the 25th percentile and take note of this number)
+
+<details><summary><b>Answer</b></summary> 
+
+Quality falls below Q20 at position 243.
+
+</details>
 
 ### 2.Quality filtering, denoising and feature picking using DADA2
 
@@ -143,28 +151,44 @@ You can get further details on the method [here](https://www.nature.com/articles
 
     qiime dada2 denoise-single \
     --i-demultiplexed-seqs single-end-demux.qza \
-    --p-trunc-len 240 \
-    --p-trunc-q 2 \
+    --p-trunc-len 243 \
+    --p-trunc-q 0 \
     --output-dir DADA2
 
-This command may take up to 30 minutes to run.
+This command may take up to 30 minutes to run (in the computers set up for the session, in your own computer this will depend on the processor and RAM features)
 
 &#x1F536; While you wait open a new terminal, open the QIIME2 environment and read the specifiactions of the parameters we have just used:
 
-    source activate qiime2-2018.4
-    qiime dada2 denoise-single -- help
+    source activate qiime2-2018.8
+    qiime dada2 denoise-single --help
     
 :question:
 
 - Which criteria are we using to filter data by quality? Why?
 
-     **Answer:** We decided to trim sequences at 240 bp because we can see in the *Interactive Quality Plot* that this is the position where Phred score falls below Q20. We could have choosen to trim reads based on *-p-trunc-q 20*. This would have delivered a dataset with reads with length variation and DADA2 does not handle this correctly, so a trimming using the *--p-trunc-len* parameter is prefered.
+<details><summary><b>Answer</b></summary>
 
+We are using the --p-trunc-len parameter and decided to trim sequences at 243 bp because we can see in the *Interactive Quality Plot* that this is the position where Phred score falls below Q20. We could have choosen to trim reads based on -p-trunc-q 20. HOwever, this would have delivered a dataset with reads with length variation and DADA2 does not handle this correctly, so a trimming using the --p-trunc-len parameter is prefered.
+    
+ </details>
+ 
+:question:
 - Are we remmoving chimeras? If so, which method are we using?
 
+<details><summary><b>Answer</b></summary>
+
+Yes we are by using the --p-chimera-method parameter set up by default. The default option is chimera removal by the "consensus" method where Chimeras are detected in samples individually, and sequences found chimeric in a sufficient fraction of samples are removed.
+
+</details>
+
+:question:
 - What are you expecting as output files?
 
-    **Hint**: use the --help parameter
+<details><summary><b>Answer</b></summary>
+
+You will get 3 output files: a "feature table"  artifact which is the resulting feature table with the information of feature (i.e. ASV) counts; a "representative sequence" artifact with the sequence information for each ASV and a "denoising stats" artifact with information on the denoising results.
+
+</details>
 
 &#x1F536; You can now crate a summary of the results and visualize it using *qiime tools view**
 
