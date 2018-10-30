@@ -32,7 +32,7 @@ If you are interested in how to install QIIME2 on your own computer please follo
 
 We are going to follow this analysis workflow:
 
-![workflow](https://github.com/mbcarbonetto/qiime2-session/blob/master/hands_on_qiime2.png)
+![workflow](https://github.com/mbcarbonetto/qiime2-session/blob/master/annexed_files/hands_on_qiime2.png)
 
 **Note:** 
 - Every task that you will perfom is marked with &#x1F536;
@@ -54,7 +54,7 @@ Besides the *.fastq* files you will find *mapping_file.tsv*. This is a tab separ
 
 This is how the mapping file looks like:
 
-![mapping_image](https://github.com/mbcarbonetto/qiime2-session/blob/master/mapping_view.jpg)
+![mapping_image](https://github.com/mbcarbonetto/qiime2-session/blob/master/annexed_files/mapping_view.jpg)
 
 The column labels are always in the first row, **#** indicates that the line is not going to be read as a sample.
 Sample IDs must be in the first column, the rest of the columns include metadata. 
@@ -74,7 +74,7 @@ Instructions for installation and usage can be found [here](https://keemei.qiime
 
 &#x1F536; To start working in QIIME2 we need to activate the QIIME environment. To do so first open a terminal:
 
-![terminal](https://github.com/mbcarbonetto/qiime2-session/blob/master/terminal_button.png)
+![terminal](https://github.com/mbcarbonetto/qiime2-session/blob/master/annexed_files/terminal_button.png)
 
 &#x1F536; Then type:
 
@@ -127,7 +127,7 @@ All QIIME2 visualizers (i.e., commands that take a --o-visualization parameter) 
 
     qiime tools view single-end-demux.qzv
 
-If you have not performed this step just click here to take a look at the results.
+*Alternative:* If you have not performed this step just click [here](https://htmlpreview.github.io/?https://github.com/mbcarbonetto/qiime2-session/blob/master/annexed_files/reads_QC/index.html) to take a look at the results.
 
 This visualization allows to explore descriptive statistics of the sample sizes (i.e. min, max, median, mean, histogram) and samples quality based on Quality Score per base.
 
