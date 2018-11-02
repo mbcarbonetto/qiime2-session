@@ -219,8 +219,8 @@ There are 70,106 reads left after quality filtering.
 
 <details><summary><b>Answer</b></summary>
     
-The sample with the maximun number of reads is WT.unt.3 (i.e. 8,104 reads)
-The sample with the minimum number of reads is WT.day3.15 i.e. 6,112 reads)
+The sample with the maximun number of reads is WT.unt.3 with 8,104 reads
+The sample with the minimum number of reads is WT.day3.15 with 6,112 reads
 
 </details>
 
