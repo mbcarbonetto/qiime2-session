@@ -2,7 +2,7 @@
 title: "Hands-on 16S based microbial diversity analysis using QIIME2"
 author: "Belen Carbonetto"
 date: "October 2018"
-Version 2
+Version 3
 output: html_document
 ---
 
@@ -14,7 +14,7 @@ output: html_document
 
 1- "Import" data into QIIME2 
 
-2- Do quality filtering, denoising and picking of features and representative sequences using DADA2
+2- Do quality filtering, denoising and picking of features and representative sequences (ASV) using DADA2
 
 3- Align sequences and build a phylogenetic tree.
 
@@ -162,9 +162,7 @@ This command may take up to 30 minutes to run (in the computers set up for the s
     source activate qiime2-2018.8
     qiime dada2 denoise-single --help
     
-:question:
-
-- Which criteria are we using to filter data by quality? Why?
+:question:  - Which criteria are we using to filter data by quality? Why?
 
 <details><summary><b>Answer</b></summary>
 
@@ -172,8 +170,7 @@ We are using the --p-trunc-len parameter and decided to trim sequences at 243 bp
     
  </details>
  
-:question:
-- Are we remmoving chimeras? If so, which method are we using?
+:question: - Are we remmoving chimeras? If so, which method are we using?
 
 <details><summary><b>Answer</b></summary>
 
@@ -181,8 +178,7 @@ Yes we are by using the --p-chimera-method parameter set up by default. The defa
 
 </details>
 
-:question:
-- What are you expecting as output files?
+:question: - What are you expecting as output files?
 
 <details><summary><b>Answer</b></summary>
 
@@ -199,11 +195,34 @@ You will get 3 output files: a "feature table"  artifact which is the resulting 
     
     qiime tools view DADA2/table-dada2.qzv
 
+*Alternative:* If you have not performed this step just click [here](http://htmlpreview.github.com/?) to take a look at the results.
+
 :question: Explore results:
 
 - How many features has DADA2 resolved?
+
+<details><summary><b>Answer</b></summary>
+    
+DADA2 detected 516 ASV
+
+</details>
+
 - How many reads remain after quality filtering?
+
+<details><summary><b>Answer</b></summary>
+
+There are 70,106 reads left after quality filtering.
+
+</details>
+
 - Which sample has the minimum frequency of reads? and the maximum?
+
+<details><summary><b>Answer</b></summary>
+    
+The sample with the maximun number of reads is WT.unt.3 (i.e. 8,104 reads)
+The sample with the minimum number of reads is WT.day3.15 i.e. 6,112 reads)
+
+</details>
 
 We have now a feature table: **table.qza**, and we have assigned a representative sequence for each feature: **representative_sequences.qza**.
 Before we continue with the analysis we can export the feature table so we can explore data with other software if needed.
