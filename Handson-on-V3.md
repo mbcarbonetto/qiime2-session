@@ -195,7 +195,7 @@ You will get 3 output files: a "feature table"  artifact which is the resulting 
     
     qiime tools view DADA2/table-dada2.qzv
 
-*Alternative:* If you have not performed this step just click [here](http://htmlpreview.github.com/?) to take a look at the results.
+*Alternative:* If you have not performed these steps just click [here](http://htmlpreview.github.com/?https://github.com/mbcarbonetto/qiime2-session/blob/master/annexed_files/DADA2_table/index.html) to take a look at the results.
 
 :question: Explore results:
 
@@ -289,15 +289,19 @@ Using a single command we are going to calculate the following metrics:
       qiime diversity core-metrics-phylogenetic \
       --i-phylogeny rooted-tree.qza \
       --i-table DADA2/table.qza \
-      --p-sampling-depth 6185 \
+      --p-sampling-depth 6112 \
       --m-metadata-file hands_on_files/mapping_file.tsv \
       --output-dir core-metrics-results
 
-:question: Can you tell why **--p-sampling-depth** was set to **6185**?
+:question: Can you tell why **--p-sampling-depth** was set to **6112**?
 
-   **Answer:** This value was chosen based on the number of sequences in the **WT.day3.15** which is the one sample that has *fewer sequences*. Because most diversity metrics are sensitive to different sampling depths across different samples,we need to normalize data based on some criterium. Sub-sampling without replacement up to minimum sample size is one way to deal with this. This is probably not the best solution, but the most frequently used and accepted so far.
+<details><summary><b>Answer</b></summary>
+    
+This value was chosen based on the number of sequences in the **WT.day3.15** which is the one sample that has *fewer sequences*. Because most diversity metrics are sensitive to different sampling depths across different samples,we need to normalize data based on some criterium. Sub-sampling without replacement up to minimum sample size is one way to deal with this. This is probably not the best solution, but the most frequently used and accepted so far.
 
 This script will randomly subsample the counts from each sample to the value provided for this parameter. For example, if you provide --p-sampling-depth 500, this step will subsample the counts in each sample without replacement so that each sample in the resulting table has a total count of 500. If the total count for any sample(s) are smaller than this value, those samples will be dropped from the diversity analysis. Choosing this value is tricky. You can make this choice by reviewing the information presented in the **table.qzv** file that was created above and choosing a value that is as high as possible (so you retain more sequences per sample) while excluding as few samples as possible.
+
+</details>
 
 Several visualization files were created, you will have one **.qzv** file for each beta diveristy metric that was calculated. 
 
@@ -305,9 +309,17 @@ Several visualization files were created, you will have one **.qzv** file for ea
 
     qiime tools view core-metrics-results/unweighted_unifrac_emperor.qzv
 
+*Alternative:* If you have not performed this step just click [here](http://htmlpreview.github.com/?https://github.com/mbcarbonetto/qiime2-session/blob/master/annexed_files/unweighted_unifrac_pcoa/data/index.html) to take a look at the visualization for unweighted Unifrac distance matrix.
+
 &#x1F536; Take a look at the results for all beta diveristy distances. (Take advantage of the interactive functionalities)
 
 :question: Can you observe any pattern or grouping of samples?
+
+<details><summary><b>Answer</b></summary>
+
+You can distinguish two groups: streptomicyn treated and untreated samples.
+
+</details>
 
 &#x1F536; We can now test for the significance of these grouping by using the following command:
 
