@@ -127,7 +127,7 @@ All QIIME2 visualizers (i.e., commands that take a --o-visualization parameter) 
 
     qiime tools view single-end-demux.qzv
 
-*Alternative:* If you have not performed this step just click [here](http://htmlpreview.github.com/?https://github.com/mbcarbonetto/qiime2-session/blob/master/annexed_files/reads_QC/index.html) to take a look at the results.
+*Alternative:* If you have not performed this step just click [here](https://mbcarbonetto.github.io/qiime2_sessions/reads_QC/index.html) to take a look at the results.
 
 This visualization allows to explore descriptive statistics of the sample sizes (i.e. min, max, median, mean, histogram) and samples quality based on Quality Score per base.
 
