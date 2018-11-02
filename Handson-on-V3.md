@@ -141,6 +141,7 @@ Quality falls below Q20 at position 243.
 
 </details>
 
+
 ### 2.Quality filtering, denoising and feature picking using DADA2
 
 We are now ready to perform quality control and feature picking. We are going to use DADA2. 
@@ -170,6 +171,7 @@ We are using the --p-trunc-len parameter and decided to trim sequences at 243 bp
     
  </details>
  
+ 
 :question: - Are we remmoving chimeras? If so, which method are we using?
 
 <details><summary><b>Answer</b></summary>
@@ -178,6 +180,7 @@ Yes we are by using the --p-chimera-method parameter set up by default. The defa
 
 </details>
 
+
 :question: - What are you expecting as output files?
 
 <details><summary><b>Answer</b></summary>
@@ -185,6 +188,7 @@ Yes we are by using the --p-chimera-method parameter set up by default. The defa
 You will get 3 output files: a "feature table"  artifact which is the resulting feature table with the information of feature (i.e. ASV) counts; a "representative sequence" artifact with the sequence information for each ASV and a "denoising stats" artifact with information on the denoising results.
 
 </details>
+
 
 &#x1F536; You can now crate a summary of the results and visualize it using *qiime tools view**
 
@@ -207,6 +211,7 @@ DADA2 detected 516 ASV
 
 </details>
 
+
 - How many reads remain after quality filtering?
 
 <details><summary><b>Answer</b></summary>
@@ -214,6 +219,7 @@ DADA2 detected 516 ASV
 There are 70,106 reads left after quality filtering.
 
 </details>
+
 
 - Which sample has the minimum frequency of reads? and the maximum?
 
@@ -223,6 +229,7 @@ The sample with the maximun number of reads is WT.unt.3 with 8,104 reads
 The sample with the minimum number of reads is WT.day3.15 with 6,112 reads
 
 </details>
+
 
 We have now a feature table: **table.qza**, and we have assigned a representative sequence for each feature: **representative_sequences.qza**.
 Before we continue with the analysis we can export the feature table so we can explore data with other software if needed.
@@ -303,6 +310,7 @@ This script will randomly subsample the counts from each sample to the value pro
 
 </details>
 
+
 Several visualization files were created, you will have one **.qzv** file for each beta diveristy metric that was calculated. 
 
 &#x1F536; You can explore results using **qiime tools view**
@@ -320,6 +328,7 @@ Several visualization files were created, you will have one **.qzv** file for ea
 You can distinguish two groups: streptomicyn treated and untreated samples.
 
 </details>
+
 
 &#x1F536; We can now test for the significance of these grouping by using the following command:
 
@@ -343,6 +352,7 @@ Yes it does for a p-value<0.05
 
 </details>
 
+
 Remember you can do the same analysis for every distance matrix, just change the **--i-distance-matrix** paramter and the name of the output file.
 
 Note: **PERMANOVA** tests whether the distances between samples within the same group are more similar to each other than distances to samples on other group. The null hypothesis tested by PERMANOVA is that, under the assumption of exchangeability of the sample units among the groups, H0: “the centroids of the groups, as defined in the space of the chosen resemblance measure, are equivalent for all groups.” Thus, if H0 were true, any observed differences among the centroids in a given set of data will be similar in size to what would be obtained under random allocation of individual sample units to the groups (i.e., under permutation).
@@ -357,9 +367,19 @@ We have not yet taken a look at alpha diversity results.
     --i-alpha-diversity core-metrics-results/observed_otus_vector.qza \
     --m-metadata-file hands_on_files/mapping_file.tsv \
     --o-visualization core-metrics-results/observed_otus_vector-group-significance.qzv
+
     qiime tools view core-metrics-results/observed_otus_vector-group-significance.qzv
    
+*Alternative:* If you have not performed this step just click [here](https://mbcarbonetto.github.io/qiime2_sessions/observed_otus/data/index.html) to take a look at the visualization.
+
 :question: Is richnnes different between *Streptomycin treated* and *untreated* samples?
+
+<details><summary><b>Answer</b></summary>
+
+Yes, richness is higher in untreated mice.
+
+</details>
+
 
 Rememeber you can do the same analysis for every alpha diveristy metric calculated just change the **--i-alpha-diversity** parameter.
 
@@ -460,5 +480,6 @@ If you want to get a deeper insight into the problem of compositional data pleas
 Bacteroides and an unamed genus in Enterobacteriaceae family are more abundant in streptomicyn treated mice. While an unnamed genus in Clostridiales group is more abundant in untreated mice.
 
 </details>
+
 
 **Note:** ANCOM does not report p-values but a table with information on the rejection (or not) of H0. They also provide the statistic "W" values and information of the distribution of data in percentiles for each tested group.
