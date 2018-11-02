@@ -195,7 +195,7 @@ You will get 3 output files: a "feature table"  artifact which is the resulting 
     
     qiime tools view DADA2/table-dada2.qzv
 
-*Alternative:* If you have not performed these steps just click [here](http://htmlpreview.github.com/?https://github.com/mbcarbonetto/qiime2-session/blob/master/annexed_files/DADA2_table/index.html) to take a look at the results.
+*Alternative:* If you have not performed these steps just click [here](http://mbcarbonetto.github.io/qiime2_sessions/DADA2_table/index.html) to take a look at the results.
 
 :question: Explore results:
 
@@ -309,7 +309,7 @@ Several visualization files were created, you will have one **.qzv** file for ea
 
     qiime tools view core-metrics-results/unweighted_unifrac_emperor.qzv
 
-*Alternative:* If you have not performed this step just click [here](http://htmlpreview.github.com/?https://github.com/mbcarbonetto/qiime2-session/blob/master/annexed_files/unweighted_unifrac_pcoa/data/index.html) to take a look at the visualization for unweighted Unifrac distance matrix.
+*Alternative:* If you have not performed this step just click [here](https://mbcarbonetto.github.io/qiime2_sessions/unweighted_unifrac_pcoa/data/index.html) to take a look at the visualization for unweighted Unifrac distance matrix.
 
 &#x1F536; Take a look at the results for all beta diveristy distances. (Take advantage of the interactive functionalities)
 
@@ -328,8 +328,13 @@ You can distinguish two groups: streptomicyn treated and untreated samples.
     --m-metadata-file hands_on_files/mapping_file.tsv \
     --m-metadata-column AntibioticUsage \
     --o-visualization core-metrics-results/unweighted_unifrac_AntibioticUsage-significance.qzv
+    
+Please take a look at the visualization files:
+
     qiime tools view core-metrics-results/unweighted_unifrac_AntibioticUsage-significance.qzv
      
+Alternative:* If you have not performed this step just click [here](https:/mbcarbonetto.github.io/qiime2_sessions/unweighted_unifrac_sig/data/index.html) to take a look at the visualization.
+
 You can do the same analysis for every distance matrix.
 
 Note: **PERMANOVA** tests whether the distances between samples within the same group are more similar to each other than distances to samples on other group. The null hypothesis tested by PERMANOVA is that, under the assumption of exchangeability of the sample units among the groups, H0: “the centroids of the groups, as defined in the space of the chosen resemblance measure, are equivalent for all groups.” Thus, if H0 were true, any observed differences among the centroids in a given set of data will be similar in size to what would be obtained under random allocation of individual sample units to the groups (i.e., under permutation).
