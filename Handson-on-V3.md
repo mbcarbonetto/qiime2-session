@@ -333,9 +333,17 @@ Please take a look at the visualization files:
 
     qiime tools view core-metrics-results/unweighted_unifrac_AntibioticUsage-significance.qzv
      
-Alternative:* If you have not performed this step just click [here](https:/mbcarbonetto.github.io/qiime2_sessions/unweighted_unifrac_sig/data/index.html) to take a look at the visualization.
+*Alternative:* If you have not performed this step just click [here](https://mbcarbonetto.github.io/qiime2_sessions/unweighted_unifrac_sig/data/index.html) to take a look at the visualization.
 
-You can do the same analysis for every distance matrix.
+:question: Does the test confirm what we have observed in the PCoA plot?
+
+<details><summary><b>Answer</b></summary>
+
+Yes it does for a p-value<0.05
+
+</details>
+
+Remember you can do the same analysis for every distance matrix, just change the **--i-distance-matrix** paramter and the name of the output file.
 
 Note: **PERMANOVA** tests whether the distances between samples within the same group are more similar to each other than distances to samples on other group. The null hypothesis tested by PERMANOVA is that, under the assumption of exchangeability of the sample units among the groups, H0: “the centroids of the groups, as defined in the space of the chosen resemblance measure, are equivalent for all groups.” Thus, if H0 were true, any observed differences among the centroids in a given set of data will be similar in size to what would be obtained under random allocation of individual sample units to the groups (i.e., under permutation).
 It is possible to choose **ANOSIM** method for testing group significance. ANOSIM is a modified version of the Mantel Test based on a standardized rank correlation between two distance matrices. The null hypothesis for the ANOSIM test is closely related to this, namely H0: “the average of the ranks of within-group distances is greater than or equal to the average of the ranks of between-group distances,” where a single ranking has been done across all inter-point distances in the distance matrix and the smallest distance (highest similarity) has a rank value of 1.
@@ -353,17 +361,17 @@ We have not yet taken a look at alpha diversity results.
    
 :question: Is richnnes different between *Streptomycin treated* and *untreated* samples?
 
-You can do the same analysis for every alpha diveristy metric calculated.
+Rememeber you can do the same analysis for every alpha diveristy metric calculated just change the **--i-alpha-diversity** parameter.
 
 Note: **qiime diversity alpha-group-significance** uses Kruskal-Wallis nonparametric test. It also reports results of pairwise comparisons, in this case we only have two groups, so pairwise comparisons are not needed.
 
 #### 5- Assign taxonomy to features with trained classifiers.
 
-We are now ready to follow next step and classify the respesnetative sequences of each feature. In order to to this, we are going to use a pre-trained classifier. We are going to use a classifier pre- trained with Greengenes 13_8 99% OTUs full-16S rRNA gene length sequences. This is the Greengenes database (last release *13_18*) aligned at 99% similarity.
+We are now ready to follow next step and classify the respesnetative sequences of each feature. In order to to this, we are going to use a pre-trained classifier. In this it has been pre- trained with Greengenes 13_8 99% OTUs full-16S rRNA gene length sequences. This is the Greengenes database (last release *13_18*) aligned at 99% similarity.
 
-You will need to download **gg-13-8-99-nb-classifier.qza** from this [link](https://data.qiime2.org/2018.4/common/gg-13-8-99-nb-classifier.qza). Please copy the file to *hands_on_files* folder.
+You will need to download **gg-13-8-99-nb-classifier.qza** from this [link](https://data.qiime2.org/2018.8/common/gg-13-8-99-nb-classifier.qza). Please copy the file to *hands_on_files* folder.
 
-QIIME2 developers also provide some other pre-trained classifiers based on Silva and other databases [here](https://docs.qiime2.org/2018.4/data-resources/)
+QIIME2 developers also provide some other pre-trained classifiers based on Silva and other databases [here](https://docs.qiime2.org/2018.8/data-resources/)
 
 Taxonomic  classifiers perform best when they are trained based on your specific sample preparation and sequencing parameters, including the primers that were used for amplification and the length of your sequence reads. In this case, we are using a database based on the full-length 16S rRNA gene, but a customized database including just V3-V4 regions would probably be a better choice. We are not customizinmg the database or training the classifier in this tutorial, but you can find a detailed tutorial [here](https://docs.qiime2.org/2018.4/tutorials/feature-classifier/).
 
@@ -382,7 +390,9 @@ Taxonomic  classifiers perform best when they are trained based on your specific
      
      qiime tools view taxonomy.qzv
      
- This will output a table with each feature ID; its classification and the confidence level for the taxonomy assignment. Note that you can export a .tsv with these results.
+ This will output a table with each feature ID; its classification and the confidence level for the taxonomy assignment. Note that you can export a .tsv with these results. 
+ 
+ *Alternative:* If you have not performed this step just click [here](https://mbcarbonetto.github.io/qiime2_sessions/taxonomy_list/data/index.html) to take a look at the visualization.
  
 &#x1F536; You can also create a visualization file based on bar plots using the following command:
 
@@ -393,7 +403,9 @@ Taxonomic  classifiers perform best when they are trained based on your specific
     --o-visualization taxa-bar-plots.qzv
     
     qiime tools view taxa-bar-plots.qzv
-    
+
+*Alternative:* If you have not performed this step just click [here](https://mbcarbonetto.github.io/qiime2_sessions/taxa_bar_plots/data/index.html) to take a look at the visualization.
+ 
 You can now explore results, take into account:
 
 - Level 1 = Kingdom (e.g Bacteria)
@@ -436,9 +448,17 @@ If you want to get a deeper insight into the problem of compositional data pleas
     --o-visualization l6-ancom-AntibioticUsage.qzv
     
     qiime tools view l6-ancom-AntibioticUsage.qzv
-    
+ 
+ *Alternative:* If you have not performed this step just click [here](https://mbcarbonetto.github.io/qiime2_sessions/ANCOM_genus/data/index.html) to take a look at the visualization.
+      
 &#x1F536; Let's take a look at the results:
     
 :question: Which genus/genera differ in abundance between treated and untreated samples? In which group is each genus more abundant?
+
+<details><summary><b>Answer</b></summary>
+
+Bacteroides and an unamed genus in Enterobacteriaceae family are more abundant in streptomicyn treated mice. While an unnamed genus in Clostridiales group is more abundant in untreated mice.
+
+</details>
 
 **Note:** ANCOM does not report p-values but a table with information on the rejection (or not) of H0. They also provide the statistic "W" values and information of the distribution of data in percentiles for each tested group.
