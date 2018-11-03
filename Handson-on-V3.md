@@ -241,7 +241,7 @@ Before we continue with the analysis we can export the feature table so we can e
     biom convert -i feature-table.biom -o feature-table.txt --to-tsv
     cd ..
     
-We have just converted the feature table **table.qza** into **feature-table.biom**, which is useful for analysis with popular tools such as [Picrust2](https://github.com/picrust/picrust2/wiki) or [Phyloseq](https://joey711.github.io/phyloseq/) and **feature-table.txt** which can be visualized in any spreadsheet app.
+We have just converted the feature table **table.qza** into **feature-table.biom**, which is useful for analysis with popular tools such as [Phyloseq](https://joey711.github.io/phyloseq/) and **feature-table.txt** which can be visualized in any spreadsheet app.
 
 ### 3- Align sequences and build a phylogenetic tree.
 
