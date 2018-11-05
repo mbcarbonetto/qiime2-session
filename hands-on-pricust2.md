@@ -27,4 +27,10 @@ This tutorial is ment to be followed after the QIIME2-sessions [hands-on](https:
 
 ### 0. Data set and input files
 
-&#x1F536; You will need to download the reference files we will use in this session from this [link](). 
+&#x1F536; You will need to download the reference files we will use in this session from this [link](https://github.com/mbcarbonetto/qiime2-session/tree/master/picrust). Please download both files:*reference.fna.qza* and * 	reference.tre.qza*.
+
+The input files will be the output files from **qiime dada2 denoise-single**:the "feature table" artifact and the "representative sequence" artifact (i.e. table-dada2.qzv and representative_sequences.qza)
+
+### 1. Place the ASVs against the PICRUSt2 reference multiple-sequence alignment and phylogeny.
+
+
