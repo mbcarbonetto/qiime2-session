@@ -127,7 +127,7 @@ All QIIME2 visualizers (i.e., commands that take a --o-visualization parameter) 
 
     qiime tools view single-end-demux.qzv
 
-*Alternative:* If you have not performed this step just click [here](http://htmlpreview.github.com/?https://github.com/mbcarbonetto/qiime2-session/blob/master/annexed_files/reads_QC/index.html) to take a look at the results.
+*Alternative:* If you have not performed this step just click [here](https://mbcarbonetto.github.io/qiime2_sessions/reads_QC/index.html) to take a look at the results.
 
 This visualization allows to explore descriptive statistics of the sample sizes (i.e. min, max, median, mean, histogram) and samples quality based on Quality Score per base.
 
@@ -140,6 +140,7 @@ For our data set, the **Overvirew** information is not very informative since we
 Quality falls below Q20 at position 243.
 
 </details>
+
 
 ### 2.Quality filtering, denoising and feature picking using DADA2
 
@@ -170,6 +171,7 @@ We are using the --p-trunc-len parameter and decided to trim sequences at 243 bp
     
  </details>
  
+ 
 :question: - Are we remmoving chimeras? If so, which method are we using?
 
 <details><summary><b>Answer</b></summary>
@@ -178,6 +180,7 @@ Yes we are by using the --p-chimera-method parameter set up by default. The defa
 
 </details>
 
+
 :question: - What are you expecting as output files?
 
 <details><summary><b>Answer</b></summary>
@@ -185,6 +188,7 @@ Yes we are by using the --p-chimera-method parameter set up by default. The defa
 You will get 3 output files: a "feature table"  artifact which is the resulting feature table with the information of feature (i.e. ASV) counts; a "representative sequence" artifact with the sequence information for each ASV and a "denoising stats" artifact with information on the denoising results.
 
 </details>
+
 
 &#x1F536; You can now crate a summary of the results and visualize it using *qiime tools view**
 
@@ -195,7 +199,7 @@ You will get 3 output files: a "feature table"  artifact which is the resulting 
     
     qiime tools view DADA2/table-dada2.qzv
 
-*Alternative:* If you have not performed this step just click [here](http://htmlpreview.github.com/?) to take a look at the results.
+*Alternative:* If you have not performed these steps just click [here](http://mbcarbonetto.github.io/qiime2_sessions/DADA2_table/index.html) to take a look at the results.
 
 :question: Explore results:
 
@@ -207,6 +211,7 @@ DADA2 detected 516 ASV
 
 </details>
 
+
 - How many reads remain after quality filtering?
 
 <details><summary><b>Answer</b></summary>
@@ -215,14 +220,16 @@ There are 70,106 reads left after quality filtering.
 
 </details>
 
+
 - Which sample has the minimum frequency of reads? and the maximum?
 
 <details><summary><b>Answer</b></summary>
     
-The sample with the maximun number of reads is WT.unt.3 (i.e. 8,104 reads)
-The sample with the minimum number of reads is WT.day3.15 i.e. 6,112 reads)
+The sample with the maximun number of reads is WT.unt.3 with 8,104 reads
+The sample with the minimum number of reads is WT.day3.15 with 6,112 reads
 
 </details>
+
 
 We have now a feature table: **table.qza**, and we have assigned a representative sequence for each feature: **representative_sequences.qza**.
 Before we continue with the analysis we can export the feature table so we can explore data with other software if needed.
@@ -234,7 +241,7 @@ Before we continue with the analysis we can export the feature table so we can e
     biom convert -i feature-table.biom -o feature-table.txt --to-tsv
     cd ..
     
-We have just converted the feature table **table.qza** into **feature-table.biom**, which is useful for analysis with [Picrust](http://picrust.github.io/picrust/) or [Phyloseq](https:/qiime diversity core-metrics-phylogeneticjoey711.github.io/phyloseq/) for example, and **feature-table.txt** which can be visualized in any spreadsheet app.
+We have just converted the feature table **table.qza** into **feature-table.biom**, which is useful for analysis with popular tools such as [Phyloseq](https://joey711.github.io/phyloseq/) and **feature-table.txt** which can be visualized in any spreadsheet app.
 
 ### 3- Align sequences and build a phylogenetic tree.
 
@@ -289,15 +296,20 @@ Using a single command we are going to calculate the following metrics:
       qiime diversity core-metrics-phylogenetic \
       --i-phylogeny rooted-tree.qza \
       --i-table DADA2/table.qza \
-      --p-sampling-depth 6185 \
+      --p-sampling-depth 6112 \
       --m-metadata-file hands_on_files/mapping_file.tsv \
       --output-dir core-metrics-results
 
-:question: Can you tell why **--p-sampling-depth** was set to **6185**?
+:question: Can you tell why **--p-sampling-depth** was set to **6112**?
 
-   **Answer:** This value was chosen based on the number of sequences in the **WT.day3.15** which is the one sample that has *fewer sequences*. Because most diversity metrics are sensitive to different sampling depths across different samples,we need to normalize data based on some criterium. Sub-sampling without replacement up to minimum sample size is one way to deal with this. This is probably not the best solution, but the most frequently used and accepted so far.
+<details><summary><b>Answer</b></summary>
+    
+This value was chosen based on the number of sequences in the **WT.day3.15** which is the one sample that has *fewer sequences*. Because most diversity metrics are sensitive to different sampling depths across different samples,we need to normalize data based on some criterium. Sub-sampling without replacement up to minimum sample size is one way to deal with this. This is probably not the best solution, but the most frequently used and accepted so far.
 
 This script will randomly subsample the counts from each sample to the value provided for this parameter. For example, if you provide --p-sampling-depth 500, this step will subsample the counts in each sample without replacement so that each sample in the resulting table has a total count of 500. If the total count for any sample(s) are smaller than this value, those samples will be dropped from the diversity analysis. Choosing this value is tricky. You can make this choice by reviewing the information presented in the **table.qzv** file that was created above and choosing a value that is as high as possible (so you retain more sequences per sample) while excluding as few samples as possible.
+
+</details>
+
 
 Several visualization files were created, you will have one **.qzv** file for each beta diveristy metric that was calculated. 
 
@@ -305,9 +317,18 @@ Several visualization files were created, you will have one **.qzv** file for ea
 
     qiime tools view core-metrics-results/unweighted_unifrac_emperor.qzv
 
+*Alternative:* If you have not performed this step just click [here](https://mbcarbonetto.github.io/qiime2_sessions/unweighted_unifrac_pcoa/data/index.html) to take a look at the visualization for unweighted Unifrac distance matrix.
+
 &#x1F536; Take a look at the results for all beta diveristy distances. (Take advantage of the interactive functionalities)
 
 :question: Can you observe any pattern or grouping of samples?
+
+<details><summary><b>Answer</b></summary>
+
+You can distinguish two groups: streptomicyn treated and untreated samples.
+
+</details>
+
 
 &#x1F536; We can now test for the significance of these grouping by using the following command:
 
@@ -316,9 +337,23 @@ Several visualization files were created, you will have one **.qzv** file for ea
     --m-metadata-file hands_on_files/mapping_file.tsv \
     --m-metadata-column AntibioticUsage \
     --o-visualization core-metrics-results/unweighted_unifrac_AntibioticUsage-significance.qzv
+    
+Please take a look at the visualization files:
+
     qiime tools view core-metrics-results/unweighted_unifrac_AntibioticUsage-significance.qzv
      
-You can do the same analysis for every distance matrix.
+*Alternative:* If you have not performed this step just click [here](https://mbcarbonetto.github.io/qiime2_sessions/unweighted_unifrac_sig/data/index.html) to take a look at the visualization.
+
+:question: Does the test confirm what we have observed in the PCoA plot?
+
+<details><summary><b>Answer</b></summary>
+
+Yes it does for a p-value<0.05
+
+</details>
+
+
+Remember you can do the same analysis for every distance matrix, just change the **--i-distance-matrix** paramter and the name of the output file.
 
 Note: **PERMANOVA** tests whether the distances between samples within the same group are more similar to each other than distances to samples on other group. The null hypothesis tested by PERMANOVA is that, under the assumption of exchangeability of the sample units among the groups, H0: “the centroids of the groups, as defined in the space of the chosen resemblance measure, are equivalent for all groups.” Thus, if H0 were true, any observed differences among the centroids in a given set of data will be similar in size to what would be obtained under random allocation of individual sample units to the groups (i.e., under permutation).
 It is possible to choose **ANOSIM** method for testing group significance. ANOSIM is a modified version of the Mantel Test based on a standardized rank correlation between two distance matrices. The null hypothesis for the ANOSIM test is closely related to this, namely H0: “the average of the ranks of within-group distances is greater than or equal to the average of the ranks of between-group distances,” where a single ranking has been done across all inter-point distances in the distance matrix and the smallest distance (highest similarity) has a rank value of 1.
@@ -332,21 +367,31 @@ We have not yet taken a look at alpha diversity results.
     --i-alpha-diversity core-metrics-results/observed_otus_vector.qza \
     --m-metadata-file hands_on_files/mapping_file.tsv \
     --o-visualization core-metrics-results/observed_otus_vector-group-significance.qzv
+
     qiime tools view core-metrics-results/observed_otus_vector-group-significance.qzv
    
+*Alternative:* If you have not performed this step just click [here](https://mbcarbonetto.github.io/qiime2_sessions/observed_otus/data/index.html) to take a look at the visualization.
+
 :question: Is richnnes different between *Streptomycin treated* and *untreated* samples?
 
-You can do the same analysis for every alpha diveristy metric calculated.
+<details><summary><b>Answer</b></summary>
+
+Yes, richness is higher in untreated mice.
+
+</details>
+
+
+Rememeber you can do the same analysis for every alpha diveristy metric calculated just change the **--i-alpha-diversity** parameter.
 
 Note: **qiime diversity alpha-group-significance** uses Kruskal-Wallis nonparametric test. It also reports results of pairwise comparisons, in this case we only have two groups, so pairwise comparisons are not needed.
 
 #### 5- Assign taxonomy to features with trained classifiers.
 
-We are now ready to follow next step and classify the respesnetative sequences of each feature. In order to to this, we are going to use a pre-trained classifier. We are going to use a classifier pre- trained with Greengenes 13_8 99% OTUs full-16S rRNA gene length sequences. This is the Greengenes database (last release *13_18*) aligned at 99% similarity.
+We are now ready to follow next step and classify the respesnetative sequences of each feature. In order to to this, we are going to use a pre-trained classifier. In this it has been pre- trained with Greengenes 13_8 99% OTUs full-16S rRNA gene length sequences. This is the Greengenes database (last release *13_18*) aligned at 99% similarity.
 
-You will need to download **gg-13-8-99-nb-classifier.qza** from this [link](https://data.qiime2.org/2018.4/common/gg-13-8-99-nb-classifier.qza). Please copy the file to *hands_on_files* folder.
+You will need to download **gg-13-8-99-nb-classifier.qza** from this [link](https://data.qiime2.org/2018.8/common/gg-13-8-99-nb-classifier.qza). Please copy the file to *hands_on_files* folder.
 
-QIIME2 developers also provide some other pre-trained classifiers based on Silva and other databases [here](https://docs.qiime2.org/2018.4/data-resources/)
+QIIME2 developers also provide some other pre-trained classifiers based on Silva and other databases [here](https://docs.qiime2.org/2018.8/data-resources/)
 
 Taxonomic  classifiers perform best when they are trained based on your specific sample preparation and sequencing parameters, including the primers that were used for amplification and the length of your sequence reads. In this case, we are using a database based on the full-length 16S rRNA gene, but a customized database including just V3-V4 regions would probably be a better choice. We are not customizinmg the database or training the classifier in this tutorial, but you can find a detailed tutorial [here](https://docs.qiime2.org/2018.4/tutorials/feature-classifier/).
 
@@ -365,7 +410,9 @@ Taxonomic  classifiers perform best when they are trained based on your specific
      
      qiime tools view taxonomy.qzv
      
- This will output a table with each feature ID; its classification and the confidence level for the taxonomy assignment. Note that you can export a .tsv with these results.
+ This will output a table with each feature ID; its classification and the confidence level for the taxonomy assignment. Note that you can export a .tsv with these results. 
+ 
+ *Alternative:* If you have not performed this step just click [here](https://mbcarbonetto.github.io/qiime2_sessions/taxonomy_list/data/index.html) to take a look at the visualization.
  
 &#x1F536; You can also create a visualization file based on bar plots using the following command:
 
@@ -376,7 +423,9 @@ Taxonomic  classifiers perform best when they are trained based on your specific
     --o-visualization taxa-bar-plots.qzv
     
     qiime tools view taxa-bar-plots.qzv
-    
+
+*Alternative:* If you have not performed this step just click [here](https://mbcarbonetto.github.io/qiime2_sessions/taxa_bar_plots/data/index.html) to take a look at the visualization.
+ 
 You can now explore results, take into account:
 
 - Level 1 = Kingdom (e.g Bacteria)
@@ -419,9 +468,19 @@ If you want to get a deeper insight into the problem of compositional data pleas
     --o-visualization l6-ancom-AntibioticUsage.qzv
     
     qiime tools view l6-ancom-AntibioticUsage.qzv
-    
+ 
+ *Alternative:* If you have not performed this step just click [here](https://mbcarbonetto.github.io/qiime2_sessions/ANCOM_genus/data/index.html) to take a look at the visualization.
+      
 &#x1F536; Let's take a look at the results:
     
 :question: Which genus/genera differ in abundance between treated and untreated samples? In which group is each genus more abundant?
 
+<details><summary><b>Answer</b></summary>
+
+Bacteroides and an unnamed genus in Enterobacteriaceae family are more abundant in streptomicyn treated mice. While an unnamed genus in Clostridiales group is more abundant in untreated mice.
+
+</details>
+
+
 **Note:** ANCOM does not report p-values but a table with information on the rejection (or not) of H0. They also provide the statistic "W" values and information of the distribution of data in percentiles for each tested group.
+You can test differeces in taxa abundances using ANCOM for all taxa levels. It is not recommended to use taxa classification below level 6 (i.e. Genus).
