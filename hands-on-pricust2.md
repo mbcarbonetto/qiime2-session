@@ -12,9 +12,9 @@ output: html_document
 
 **During this hands-on session you will learn how to:**
 
-Use DADA2 output to infer [EC](https://bitesizebio.com/10683/understand-ec-numbers-in-5-minutes-part-i-how-ec-numbers-work/) numbers and [KO](https://www.genome.jp/kegg/ko.html) predictions. 
+Use DADA2 output to calculate [EC](https://bitesizebio.com/10683/understand-ec-numbers-in-5-minutes-part-i-how-ec-numbers-work/) numbers and [KO](https://www.genome.jp/kegg/ko.html) predictions. 
 
-MetaCyc pathway coverages and abundances will also be calculated and .tsv files with results will be exported.
+MetaCyc pathway coverages and abundances will also be calculated and *.tsv* files with prediction results will be exported.
 
 **Notes:** Picrust2 and the plugin *q2 picrust2* has already been installed in your working station in order to follow this tutorial.
 If you are following the tutorial on your own please find instructions for the installation [here](https://library.qiime2.org/plugins/q2-picrust2/13/)
