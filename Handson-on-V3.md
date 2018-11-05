@@ -477,9 +477,10 @@ If you want to get a deeper insight into the problem of compositional data pleas
 
 <details><summary><b>Answer</b></summary>
 
-Bacteroides and an unamed genus in Enterobacteriaceae family are more abundant in streptomicyn treated mice. While an unnamed genus in Clostridiales group is more abundant in untreated mice.
+Bacteroides and an unnamed genus in Enterobacteriaceae family are more abundant in streptomicyn treated mice. While an unnamed genus in Clostridiales group is more abundant in untreated mice.
 
 </details>
 
 
 **Note:** ANCOM does not report p-values but a table with information on the rejection (or not) of H0. They also provide the statistic "W" values and information of the distribution of data in percentiles for each tested group.
+You can test differeces in taxa abundances using ANCOM for all taxa levels. It is not recommended to use taxa classification below level 6 (i.e. Genus).
