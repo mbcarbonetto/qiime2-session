@@ -33,4 +33,24 @@ The input files will be the output files from **qiime dada2 denoise-single**:the
 
 ### 1. Place the ASVs against the PICRUSt2 reference multiple-sequence alignment and phylogeny.
 
+The input files of this step are the representive sequences (i.e. the ASVs) and the refence tree and alignment.
+
+Hint: It may be helpful to create a working directory for this step and copy all input files there, alternatively you can call the complete path for each file. Please note the paths maybe different to the paths is this tutorial
+
+&#x1F536;
+
+    mkdir picrust2_results
+    mv Donwloads/reference.fna.qza picrust2/
+    mv Donwloads/reference.tre.qza picrust2/
+    
+    qiime fragment-insertion sepp \
+    --i-representative-sequences DADA2/representative_sequences.qza \
+    --p-threads 1 \
+    --i-reference-alignment picrust2/reference.fna.qza \
+    --i-reference-phylogeny picrust2/reference.tre.qza \
+    --output-dir picrust2/results
+ 
+### 1. Run the full PICRUSt2 pipeline
+
+
 
