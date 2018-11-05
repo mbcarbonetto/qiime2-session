@@ -23,8 +23,6 @@ This tutorial is ment to be followed after the QIIME2-sessions [hands-on](https:
 
 - Every task that you will perfom is marked with &#x1F536;
 
-- Questions to further analyse results will be marked with :question:
-
 ### 0. Data set and input files
 
 &#x1F536; You will need to download the reference files we will use in this session from this [link](https://github.com/mbcarbonetto/qiime2-session/tree/master/picrust). Please download both files:*reference.fna.qza* and * 	reference.tre.qza*.
