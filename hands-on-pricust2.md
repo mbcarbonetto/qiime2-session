@@ -16,7 +16,7 @@ Use DADA2 output to calculate [EC](https://bitesizebio.com/10683/understand-ec-n
 
 MetaCyc pathway coverages and abundances will also be calculated and *.tsv* files with prediction results will be exported.
 
-**Notes:** PICRUSt2 and the plugin *q2 picrust2* has already been installed in your working station in order to follow this tutorial.
+**Notes:** [PICRUSt2](https://github.com/picrust/picrust2/wiki) and the plugin [*q2 picrust2*](https://github.com/picrust/picrust2/wiki/q2-picrust2-Tutorial) have already been installed in your working station in order to follow this tutorial.
 If you are following the tutorial on your own please find instructions for the installation [here](https://library.qiime2.org/plugins/q2-picrust2/13/)
 
 This tutorial is ment to be followed after the QIIME2-sessions [hands-on](https://github.com/mbcarbonetto/qiime2-session/blob/master/Hands-on-V3.md)
@@ -106,6 +106,6 @@ You can use the same command for each .qzv file
     biom convert -i picrust2/results/q2-picrust2_output/exported_EC/feature-table.biom -o  picrust2/results/q2-picrust2_output/exported_EC/feature-table.tsv --to-tsv
     biom convert -i picrust2/results/q2-picrust2_output/exported_KO/feature-table.biom -o  picrust2/results/q2-picrust2_output/exported_KO/feature-table.tsv --to-tsv
     
-Follow this [link](https://github.com/picrust/picrust2/wiki) for citation iformation and more details on PICRUSt2 pipeline
+Follow this [link](https://github.com/picrust/picrust2/wiki) for citation information and more details on PICRUSt2 pipeline
 
 
