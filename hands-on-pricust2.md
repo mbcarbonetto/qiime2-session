@@ -19,7 +19,7 @@ MetaCyc pathway coverages and abundances will also be calculated and *.tsv* file
 **Notes:** [PICRUSt2](https://github.com/picrust/picrust2/wiki) and the plugin [*q2 picrust2*](https://github.com/picrust/picrust2/wiki/q2-picrust2-Tutorial) have already been installed in your working station in order to follow this tutorial.
 If you are following the tutorial on your own please find instructions for the installation [here](https://library.qiime2.org/plugins/q2-picrust2/13/)
 
-This tutorial is ment to be followed after the QIIME2-sessions [hands-on](https://github.com/mbcarbonetto/qiime2-session/blob/master/Hands-on-V3.md)
+This tutorial is ment to be followed after the QIIME2 [hands-on](https://github.com/mbcarbonetto/qiime2-session/blob/master/Hands-on-V3.md) session.
 
 - Every task that you will perfom is marked with &#x1F536;
 
@@ -27,7 +27,7 @@ This tutorial is ment to be followed after the QIIME2-sessions [hands-on](https:
 
 &#x1F536; You will need to download the reference files we will use in this session from this [link](https://github.com/mbcarbonetto/qiime2-session/tree/master/picrust). Please download both files: *reference.fna.qza* and *reference.tre.qza*.
 
-The input files will be the output files from **qiime dada2 denoise-single** command: the "feature table" artifact and the "representative sequence" artifact (i.e. table.qza and representative_sequences.qza in the QIIME2-sessions [hands-on](https://github.com/mbcarbonetto/qiime2-session/blob/master/Hands-on-V3.md))
+The input files will be the output files from **qiime dada2 denoise-single** command: the "feature table" artifact and the "representative sequence" artifact (i.e. table.qza and representative_sequences.qza in the QIIME2 [hands-on](https://github.com/mbcarbonetto/qiime2-session/blob/master/Hands-on-V3.md) sessions)
 
 ### 1. Place the ASVs against the PICRUSt2 reference multiple-sequence alignment and phylogeny.
 
@@ -63,7 +63,7 @@ Available methods are: maximum parsimony (mp), empirical probabilities (emp_prob
 
 The --p-max-nsti option specifies how distantly placed a sequence needs to be in the reference phylogeny before it is excluded. The default cut-off is 2. In human datasets used for testing PICRUSt2 the only ASVs above this default cut-off were 18S sequences erroneously in 16S datasets, which suggests this cut-off is highly lenient. For environmental datasets a higher proportion of ASVs may be thrown out based on this default cut-off (Douglas et al. In Prep).
 
-**Hint:** for further detais on parameters options allways type **--help** at the end on the command:
+**Hint:** for further details on parameters options allways type **--help** at the end on the command:
 
     qiime picrust2 custom-tree-pipeline --help
    
