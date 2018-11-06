@@ -1,5 +1,5 @@
 ---
-title: "Hands-on: Prediction of functional diveristy using 16S rRNA gene data with PICRUSt2 (*q2 picrust2*)"
+title: "Hands-on: Prediction of functional diversity using 16S rRNA gene data with PICRUSt2 (*q2 picrust2*)"
 author: "Belen Carbonetto"
 date: "November 2018"
 Version 3
