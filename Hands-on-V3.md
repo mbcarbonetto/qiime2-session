@@ -484,3 +484,6 @@ Bacteroides and an unnamed genus in Enterobacteriaceae family are more abundant 
 
 **Note:** ANCOM does not report p-values but a table with information on the rejection (or not) of H0. They also provide the statistic "W" values and information of the distribution of data in percentiles for each tested group.
 You can test differeces in taxa abundances using ANCOM for all taxa levels. It is not recommended to use taxa classification below level 6 (i.e. Genus).
+
+
+**Alternative additional steps:** Please follow [this tutorial](https://github.com/mbcarbonetto/qiime2-session/blob/master/hands-on-pricust2.md) to perform analisis of functional diversity using PICRUST2.
