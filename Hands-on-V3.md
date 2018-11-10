@@ -236,7 +236,7 @@ Before we continue with the analysis we can export the feature table so we can e
 
 &#x1F536; In order to export **table.qza** run:
 
-    qiime tools export DADA2/table.qza --output-dir exported_table
+    qiime tools export --input-path DADA2/table.qza --output-dir exported_table
     cd exported_table
     biom convert -i feature-table.biom -o feature-table.txt --to-tsv
     cd ..
