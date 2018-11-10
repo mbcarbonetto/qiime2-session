@@ -167,12 +167,12 @@ This command may take up to 30 minutes to run (in the computers set up for the s
 
 <details><summary><b>Answer</b></summary>
 
-We are using the --p-trunc-len parameter and decided to trim sequences at 243 bp because we can see in the *Interactive Quality Plot* that this is the position where Phred score falls below Q20. We could have choosen to trim reads based on -p-trunc-q 20. HOwever, this would have delivered a dataset with reads with length variation and DADA2 does not handle this correctly, so a trimming using the --p-trunc-len parameter is prefered.
+We are using the --p-trunc-len parameter and decided to trim sequences at 243 bp because we can see in the *Interactive Quality Plot* that this is the position where Phred score falls below Q20. We could have choosen to trim reads based on -p-trunc-q 20. However, this would have delivered a dataset with reads with length variation and DADA2 does not handle this correctly, so a trimming using the --p-trunc-len parameter is prefered.
     
  </details>
  
  
-:question: - Are we remmoving chimeras? If so, which method are we using?
+:question: - Are we removing chimeras? If so, which method are we using?
 
 <details><summary><b>Answer</b></summary>
 
@@ -190,7 +190,7 @@ You will get 3 output files: a "feature table"  artifact which is the resulting 
 </details>
 
 
-&#x1F536; You can now crate a summary of the results and visualize it using *qiime tools view**
+&#x1F536; You can now create a summary of the results and visualize it using *qiime tools view**
 
     qiime feature-table summarize \
     --i-table DADA2/table.qza \
