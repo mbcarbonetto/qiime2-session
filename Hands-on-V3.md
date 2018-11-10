@@ -50,7 +50,7 @@ We are going to follow this analysis workflow:
 The test dataset we are going to use is originally from [Batista et al. (2015)](https://www.nature.com/articles/ncomms9945).
 It is composed of ten **.fastq** files, one for each sample. Mice gut microbiota was sampled under 2 conditions: under Streptomycin treatment and with no antibiotics treatment. The data set is composed of 5 replicates for each condition. Each file consist of 10,000 subsampled reads from the original fastq files. Reads are amplicons of the V3–V4 region of the 16S rRNA gene. They are single forward reads, already demultiplexed (one file/sample), with no primers and no barcodes.
 
-Besides the *.fastq* files you will find *mapping_file.tsv*. This is a tab separated value table that includes metadata. The easiest way to make a mapping file is with a spreadsheet tool. However, Excel is not the best choice! It usually corrupts gene symbols, anything interpreted as dates,etc. Google Docs is prefered.
+Besides the *.fastq* files you will find *mapping_file.tsv*. This is a tab separated value table that includes metadata. The easiest way to make a mapping file is with a spreadsheet tool. However, Excel is not the best choice! It usually corrupts gene symbols, anything interpreted as dates, etc. Google Docs is prefered.
 
 This is how the mapping file looks like:
 
@@ -131,7 +131,7 @@ All QIIME2 visualizers (i.e., commands that take a --o-visualization parameter) 
 
 This visualization allows to explore descriptive statistics of the sample sizes (i.e. min, max, median, mean, histogram) and samples quality based on Quality Score per base.
 
-For our data set, the **Overvirew** information is not very informative since we know beforehand that all samples have the same size (10,000 reads). However, take a look at que **Interactive Quality Plot**:
+For our data set, the **Overview** information is not very informative since we know beforehand that all samples have the same size (10,000 reads). However, take a look at the **Interactive Quality Plot**:
 
 :question: what is the read size when quality falls below Q20? (Take a look at the value in the 25th percentile and take note of this number)
 
@@ -158,7 +158,7 @@ You can get further details on the method [here](https://www.nature.com/articles
 
 This command may take up to 30 minutes to run (in the computers set up for the session, in your own computer this will depend on the processor and RAM features)
 
-&#x1F536; While you wait open a new terminal, open the QIIME2 environment and read the specifiactions of the parameters we have just used:
+&#x1F536; While you wait, open a new terminal, open the QIIME2 environment and read the specifications of the parameters we have just used:
 
     source activate qiime2-2018.8
     qiime dada2 denoise-single --help
@@ -245,7 +245,7 @@ We have just converted the feature table **table.qza** into **feature-table.biom
 
 ### 3- Align sequences and build a phylogenetic tree.
 
-Later we are going to calculate several diversity metrics and distances that will include phylogenetic information of the features (i.e. Unifrac and Faith’s Phylogenetic Diversity). In this step we are going to align the representative sequences of each feature and then buid a phylogenetic tree. This requires four steps: the alignment itself, denoising of highly variable positions and builidng and rooting the pylogenetic tree.
+Later we are going to calculate several diversity metrics and distances that will include phylogenetic information of the features (i.e. Unifrac and Faith’s Phylogenetic Diversity). In this step we are going to align the representative sequences of each feature and then buid a phylogenetic tree. This requires four steps: the alignment itself, denoising of highly variable positions and building and rooting the pylogenetic tree.
 
 &#x1F536; Step 1: Alignment
 
@@ -271,7 +271,7 @@ Later we are going to calculate several diversity metrics and distances that wil
     --i-tree unrooted-tree.qza \
     --o-rooted-tree rooted-tree.qza
     
-These commands will not generate any visulization otuput.
+These commands will not generate any visualization output.
 
 Now that we have the phylogenetic tree we are ready to calculate diversity.
 
@@ -280,7 +280,7 @@ Now that we have the phylogenetic tree we are ready to calculate diversity.
 Using a single command we are going to calculate the following metrics:
 
 **Alpha	diversity**
-- *Shannon’s	diversity	index*	(a quantitative	measure	of community richness)
+- *Shannon’s diversity index* (a quantitative measure of community richness)
 - *Observed	OTUs*	(just community	richness)
 - *Faith’s Phylogenetic Diversity* (a qualitiative measure of community	richness that incorporates phylogenetic	relationships between the features)
 - *Evenness*	(or	Pielou’s Evenness;	a measure of community evenness)
@@ -353,7 +353,7 @@ Yes it does for a p-value<0.05
 </details>
 
 
-Remember you can do the same analysis for every distance matrix, just change the **--i-distance-matrix** paramter and the name of the output file.
+Remember you can do the same analysis for every distance matrix, just change the **--i-distance-matrix** parameter and the name of the output file.
 
 Note: **PERMANOVA** tests whether the distances between samples within the same group are more similar to each other than distances to samples on other group. The null hypothesis tested by PERMANOVA is that, under the assumption of exchangeability of the sample units among the groups, H0: “the centroids of the groups, as defined in the space of the chosen resemblance measure, are equivalent for all groups.” Thus, if H0 were true, any observed differences among the centroids in a given set of data will be similar in size to what would be obtained under random allocation of individual sample units to the groups (i.e., under permutation).
 It is possible to choose **ANOSIM** method for testing group significance. ANOSIM is a modified version of the Mantel Test based on a standardized rank correlation between two distance matrices. The null hypothesis for the ANOSIM test is closely related to this, namely H0: “the average of the ranks of within-group distances is greater than or equal to the average of the ranks of between-group distances,” where a single ranking has been done across all inter-point distances in the distance matrix and the smallest distance (highest similarity) has a rank value of 1.
@@ -372,7 +372,7 @@ We have not yet taken a look at alpha diversity results.
    
 *Alternative:* If you have not performed this step just click [here](https://mbcarbonetto.github.io/qiime2_sessions/observed_otus/data/index.html) to take a look at the visualization.
 
-:question: Is richnnes different between *Streptomycin treated* and *untreated* samples?
+:question: Is richnness different between *Streptomycin treated* and *untreated* samples?
 
 <details><summary><b>Answer</b></summary>
 
@@ -381,13 +381,13 @@ Yes, richness is higher in untreated mice.
 </details>
 
 
-Rememeber you can do the same analysis for every alpha diveristy metric calculated just change the **--i-alpha-diversity** parameter.
+Remember you can do the same analysis for every alpha diveristy metric calculated just change the **--i-alpha-diversity** parameter.
 
 Note: **qiime diversity alpha-group-significance** uses Kruskal-Wallis nonparametric test. It also reports results of pairwise comparisons, in this case we only have two groups, so pairwise comparisons are not needed.
 
 #### 5- Assign taxonomy to features with trained classifiers.
 
-We are now ready to follow next step and classify the respesnetative sequences of each feature. In order to to this, we are going to use a pre-trained classifier. In this it has been pre- trained with Greengenes 13_8 99% OTUs full-16S rRNA gene length sequences. This is the Greengenes database (last release *13_18*) aligned at 99% similarity.
+We are now ready to follow the next step and classify representative sequences of each feature. In order to do this, we are going to use a pre-trained classifier. This has been pre-trained with Greengenes 13_8 99% OTUs full-16S rRNA gene length sequences. Here we use the Greengenes database (last release *13_18*) aligned at 99% similarity.
 
 You will need to download **gg-13-8-99-nb-classifier.qza** from this [link](https://data.qiime2.org/2018.8/common/gg-13-8-99-nb-classifier.qza). Please copy the file to *hands_on_files* folder.
 
