@@ -3,6 +3,11 @@ title: "Hands-on 16S based microbial diversity analysis using QIIME2"
 author: "Belen Carbonetto"
 date: "October 2018"
 Version 3
+
+This work was supported by ONEIDA project (LISBOA-01-0145-FEDER-016417) co-funded by FEEI -
+"Fundos Europeus Estruturais e de Investimento" from "Programa Operacional Regional Lisboa 2020" 
+and by national funds from FCT - "Fundação para a Ciência e a Tecnologia.”
+
 output: html_document
 ---
 
