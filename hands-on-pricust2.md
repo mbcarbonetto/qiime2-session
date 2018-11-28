@@ -33,7 +33,7 @@ The input files will be the output files from **qiime dada2 denoise-single** com
 
 &#x1F536; The input files for this step are the representive sequences (i.e. the ASVs) and the reference tree and alignment.
 
-**Hint:** It may be helpful to create a working directory for this step and copy all input files there, alternatively you can call the complete path for each file. Please note the paths in this tutorial may differ from your paths depending where you placed the refences and/or if you are using IIME2-sessions hands-on output files.
+**Hint:** It may be helpful to create a working directory for this step and copy all input files there, alternatively you can call the complete path for each file. *Please note the paths in this tutorial may differ from your paths depending where you placed the refences and/or if you are using QIIME2-sessions hands-on output files*
 
     mkdir picrust2
     mv Donwloads/reference.fna.qza picrust2/
