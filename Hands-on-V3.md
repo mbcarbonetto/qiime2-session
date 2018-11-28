@@ -50,7 +50,7 @@ We are going to follow this analysis workflow:
 
 &#x1F536; You will need to unzip the file:
 
-    unzip ~/Downloads/hands_on_files.zip -d hands_on_files
+    unzip ~/Downloads/hands_on_files.zip -d ~/Downloads/hands_on_files
 
 The test dataset we are going to use is originally from [Batista et al. (2015)](https://www.nature.com/articles/ncomms9945).
 It is composed of ten **.fastq** files, one for each sample. Mice gut microbiota was sampled under 2 conditions: under Streptomycin treatment and with no antibiotics treatment. The data set is composed of 5 replicates for each condition. Each file consist of 10,000 subsampled reads from the original fastq files. Reads are amplicons of the V3–V4 region of the 16S rRNA gene. They are single forward reads, already demultiplexed (one file/sample), with no primers and no barcodes.
