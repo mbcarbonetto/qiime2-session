@@ -58,7 +58,7 @@ The input files will be the output files from **qiime dada2 denoise-single** com
     --p-hsp-method mp \
     --p-max-nsti 2
  
-Note: the *--p-hsp-method= pic* phylogenetic independent contrast hidden-state prediction is fastest. However PICRUSt2 developers suugest to use the *mp method* maximum parsimony. 
+Note: the *--p-hsp-method= pic* phylogenetic independent contrast hidden-state prediction is fastest. However PICRUSt2 developers suggest to use the *mp method* maximum parsimony. 
 Available methods are: maximum parsimony (mp), empirical probabilities (emp_prob), subtree averaging (subtree_average), phylogenetic independent contrast (pic), or squared-change parsimony (scq).
 
 The --p-max-nsti option specifies how distantly placed a sequence needs to be in the reference phylogeny before it is excluded. The default cut-off is 2. In human datasets used for testing PICRUSt2 the only ASVs above this default cut-off were 18S sequences erroneously in 16S datasets, which suggests this cut-off is highly lenient. For environmental datasets a higher proportion of ASVs may be thrown out based on this default cut-off (Douglas et al. In Prep).
