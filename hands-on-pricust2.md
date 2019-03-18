@@ -17,7 +17,7 @@ Use DADA2 output to calculate [EC](https://bitesizebio.com/10683/understand-ec-n
 MetaCyc pathway coverages and abundances will also be calculated and *.tsv* files with prediction results will be exported.
 
 **Notes:** [PICRUSt2](https://github.com/picrust/picrust2/wiki) and the plugin [*q2 picrust2*](https://github.com/picrust/picrust2/wiki/q2-picrust2-Tutorial) have already been installed in your working station in order to follow this tutorial.
-If you are following the tutorial on your own please find instructions for the installation [here](https://library.qiime2.org/plugins/q2-picrust2/13/)
+If you are following the tutorial on your own please find instructions for the installation [here](https://library.qiime2.org/plugins/q2-picrust2/13/). (If you have any problem with the installation process replace steps 2 and 3 in the previous link by installing picrust2 through Bioconda, instructions [here](https://anaconda.org/bioconda/picrust2))
 
 This tutorial is ment to be followed after the QIIME2 [hands-on](https://github.com/mbcarbonetto/qiime2-session/blob/master/Hands-on-V3.md) session.
 
